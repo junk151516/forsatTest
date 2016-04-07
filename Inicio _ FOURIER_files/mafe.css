@@ -1,0 +1,413 @@
+
+
+.langs {
+    position: relative;
+    width: 20px;
+    height: 30px;
+    border-radius: 100%;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    float: right;
+    background: #13536F;
+    box-shadow: 1px 1px 3px #414141;
+    margin: 10px 15px 0 0;
+    font-size: 15px;
+    text-align: center;
+     font: bold 12px/12px Helvetica, Arial;
+}
+.nivel1,
+.nivel2,
+.nivel3 { border-bottom: thin solid #BBBBBB;
+display: block;
+position: relative;
+float: left;
+    width: 100%;}
+.items strong{
+	font-size: 15px;
+	color: #2F3F32;
+}
+.items{
+	padding: 40px;
+
+}
+
+
+.button img{
+    width: 50px;
+    height: 0px;
+}
+
+/*---ICONO MOUSE---*/
+.icono_flecha .fa{
+    position: absolute;
+    width: 48px;
+    height: 81px;
+    z-index: 9999;
+    bottom: 0px;
+    left: 35px;
+    font-size: 4.5em;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.25;
+    transition: all 0.2s ease;
+}    
+.icono_flecha:hover .fa{
+    opacity: .9;
+    transform: scale(1.2, 1.2);
+}
+
+
+.detail figure .icon i{
+    color: #2E1471;
+}
+
+
+
+
+/*---AJUSTES LOGO HOME--*/
+.logo-banner{
+    width: 100%;
+}
+
+.mySlide .container{
+    height: 75vh;
+} 
+.logo-banner img{
+    margin: auto;
+}
+.mySlide .caption p{
+    margin: 14px 0;
+    padding: 4px;
+}
+.mySlide .caption h2{
+    margin-top: 223px;
+    font-size: 2rem;
+}
+.mySlide .caption .actions{
+    margin-top: 15px;
+}
+.mySlide .caption .actions .btn-link{
+    margin-top: 10px;
+}
+.banner .bx-wrapper .bx-pager{
+    bottom: 36px;
+}
+
+/*AJUSTES SECCIÓN NOSOTROS*/
+
+.workTeam article figure{
+    width: 180px;
+    height: 180px;
+}
+.workTeam .nivel2 article figure{
+    width: 140px;
+    height: 140px;
+}
+.workTeam .nivel2 article{
+    float: left;
+    padding: 0 26px;
+}
+
+.workTeam .panel{
+   height: 220px;
+}
+h2.items {
+    text-align: center;
+}
+
+h2.items strong{
+   
+ text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 400
+}
+.workTeam .nivel2 article{
+    float: none;
+    display: inline-block;
+    width: 19%;
+    padding: 0;
+}
+
+.workTeam .nivel3 article{
+    float: none;
+    display: inline-block;
+    width: 16%;
+}
+.workTeam .sinInfo article figure .info{
+    opacity: 0;
+    cursor: default;
+}
+section.banner .bx-wrapper .bx-pager{
+    width: 52%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+}
+.workTeam article figure .info{
+    cursor: pointer;
+}
+
+.card a{
+    text-transform: inherit
+}
+
+.workTeam .v2{
+    position: absolute;
+}
+
+.workTeam .v2 video{
+    position: fixed;
+}
+
+.workTeam .contentint{
+    margin-top: 400px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #FFFFFF
+}
+
+.myHeader{
+    top: 0px;
+}
+
+section.informative{
+        height: auto;
+    z-index: 999;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.mySlide{
+    height: 535px
+}
+.mySlide::before{
+    height: 105%
+}
+
+body .video video::before{
+    background-color: rgba(0,0,0,.7);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0px;
+    height: 100%;
+    content: ""
+}
+
+body .video{
+    position: fixed;
+}
+
+section.about-products,section.areas,section.banner-infor,section.carousel{
+    position: relative;
+    z-index: 999;
+    background: #FFFFFF;
+    margin-top: -2px;
+}
+
+section.about-products .about-products2{
+    margin-top: 0px;
+}
+
+section.banner{
+    height: 590px;
+}
+
+section.about-products .about-products2 .about-prodcucts3 h2{
+    margin-top: 25px;
+}
+
+section.informative .inf-3{
+    height: auto;
+    /*padding-bottom: 0px;*/
+    
+}
+section.informative{
+    font-size: 0px;
+    vertical-align: top;
+    background: #FFFFFF;
+}
+
+section.informative .inf-3 h2{
+    font-size: 2.2rem;
+}
+
+section.informative a.btn{
+    font-size: 1.4rem;
+}
+section.informative .informative2,section.informative .inf-3{
+    float: inherit;
+}
+
+section.informative .informative2 figure{
+    background: #FFFFFF;
+    background-size: cover;
+}
+
+section.banner-infor .banner-infor2 ul li h3{
+    line-height: 120%
+}
+
+section.banner-infor .banner-infor2 .caption{
+    height: auto;
+}
+
+ul#nav-mobile{
+    z-index: 999999999;
+    top: 100px;
+}
+
+#sidenav-overlay{
+    z-index: 999
+}
+
+h1,h2,h3,h4{
+    line-height: 120%
+}
+
+@media screen and (max-width: 992px){
+    section.informative .informative2,section.informative .inf-3{
+        width: 100%
+    }
+    section.areas article{
+        text-align: center;
+    }
+    section.areas article a{
+        margin: auto;
+        width: auto;
+        height: auto;
+        display: inherit;
+        max-width: 340px;
+        float: Initial;
+    }    
+    section.areas article a figure{
+        display: inline-block;
+        float: initial;
+        background-position: center
+    }
+    section.informative .inf-3::before{
+        display: none;
+    }
+    section.banner-infor .banner-infor2 ul li figure{
+        float: left;
+        width: 60px;
+        height: 60px;
+    }
+    section.banner-infor .banner-infor2 ul li h3{
+        line-height: 120%;
+        float: left;
+        margin: 0;
+        margin-left: 10px;
+        font-size: 1.8rem
+    }
+
+    section.banner-infor .banner-infor2 ul li{
+        height: auto;
+    }
+
+    section.banner-infor .banner-infor2 ul li p{
+        font-size: 1.1rem!important;
+        float: left;
+        margin-top: 20px;
+    }
+
+    .mySlide .caption h2{
+        font-size: 2.2rem!important;
+        width: auto;
+        margin-left: 0px
+    }
+
+    section.about-products .about-products2{
+        padding: 60px 20px;
+    }
+
+    .button-collapse{
+        position: fixed;
+        z-index: 99999999;
+    }
+
+    .workTeam .v2 video {
+        position: fixed;
+        width: 100%;
+        height: 450px;
+        margin-top: 20px;
+    }
+
+    #sidenav-overlay{
+        z-index: 99999999;
+    }
+}
+@media screen and (max-width: 600px){
+    section.informative .inf-3{
+        padding: 20px!important;
+        height: auto!important;
+    }
+
+    section.banner-infor .banner-infor2 ul li p{
+        font-size: 1.2rem;
+    }
+
+    section.banner-infor .banner-infor2 .caption{
+        padding: 30px  20px
+    }
+
+    section.about-products .about-products2 .card-info, section.about-products .about-products2 .card-info2{
+        width: 100%;
+    }
+
+    .mySlide .caption h2{
+        margin-top: 116px;
+    }
+
+    header{
+        position: fixed;
+        top: 0;
+    }
+
+    .workTeam .contentint{
+        margin-top: 340px 
+    }
+
+    section.informative .informative2{
+        height: auto!important;
+    }
+
+    .distribuitors .element-item{
+        width: 100%
+    }
+
+    .distribuitors .element-item .text p{
+        font-size: 1rem
+    }
+
+    main.index2 section.about-products .about-products2 .card-info .fondo p, main.index2 section.about-products .about-products2 .card-info .fondo2 p, main.index2 section.about-products .about-products2 .card-info2 .fondo p, main.index2 section.about-products .about-products2 .card-info2 .fondo2 p{
+        font-size: 1rem;
+    }
+
+    main.workTeam,main.contact{
+        margin-top: 110px
+    }
+
+    
+
+}
+
+main.workTeam .informative .informative2 h2{
+    font-size: 2.2rem;
+}
+
+footer .footer-sec .input-field textarea{
+    height: 120px!important;
+}
+
+footer .footer-sec .input-field label.active{
+    margin-top: -21px;
+    display: none;
+}
+
+section.informative .informative2{
+    height: auto!important;
+}
