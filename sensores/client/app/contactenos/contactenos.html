@@ -1,0 +1,89 @@
+<div class="row indigo">
+  <div class="col s12">
+    <h3 class="white-text center-align">CONTACTENOS</h3>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="row">
+  <div class="col l6 s12">
+
+      <div class="google-maps">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.061415047164!2d-75.43539517473069!3d6.032382166092952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x3e19f8dd3b1a2f35!2sCafeter%C3%ADa+El+Oriente!5e0!3m2!1ses-419!2sco!4v1461010093999" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+  </div>
+      <div class="col l6">
+    <form>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="nombre" type="text" class="validate">
+          <label for="nombre"> Nombre </label>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">business</i>
+          <input id="compania" type="text" class="validate">
+          <label for="compania"> Compañia </label>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" type="email" class="validate">
+          <label for="email"> Email </label>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
+          <input id="telefono" type="text" class="validate">
+          <label for="telefono"> Teléfono </label>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">location_on</i>
+          <input id="direccion" type="text" class="validate">
+          <label for="direccion"> Dirección </label>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">location_city</i>
+          <input id="Ciudad" type="text" class="validate" >
+          <label for="Ciudad"> Ciudad </label>
+        </div>
+
+        <div class="col m1 s2 input-field">
+          <i class="material-icons prefix">public</i>
+        </div>
+        <div class="} col s10 m11">
+          <select class="" ng-model="select.value1" material-select watch>
+            <option value="">Seleccione un pais</option>
+            <option ng-repeat="countrie in contactenosCtrl.countries">{{countrie.name}}</option>
+          </select>
+        </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">speaker_notes</i>
+            <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+            <label for="textarea1">Inquietudes o sugerencias</label>
+          </div>
+
+
+    </form>
+      </div>
+  </div>
+</div>
+<style>
+    .google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+</style>

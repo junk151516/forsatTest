@@ -1,0 +1,131 @@
+<!-- <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">sensores-app</a>
+    </div>
+    <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in nav.menu" ng-class="{active: nav.isActive(item.link)}">
+            <a ng-href="{{item.link}}">{{item.title}}</a>
+        </li>
+        <li ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a href="/admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a href="/signup">Sign up</a></li>
+        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a href="/login">Login</a></li>
+        <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
+        <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="nav.isLoggedIn()"><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<!-- **************** -->
+<!--
+<li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li class="bold active"><a class="collapsible-header waves-effect waves-indigo active">Nuestra Compañia</a>
+                    <div class="collapsible-body" style="display: block;">
+                        <ul>
+                            <li><a href="#input-field">Input-field</a></li>
+                            <li><a href="#input-date">Input-date</a></li>
+                            <li><a href="#select">Material select</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li> -->
+
+<!-- *********************** -->
+<div class="navbar-fixed">
+
+<nav class="indigo" ng-controller="NavbarController">
+  <ul class="right hide-on-med-and-down">
+
+    <li ng-class="{active: nav.isActive('/nosotros')}"><a href="/nosotros">NUESTRA COMPAÑIA <i class="material-icons  right">business</i></a></li>
+    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">SERVICIOS<i class="material-icons  right">public</i></a></li>
+         <ul id='dropdown1' class='dropdown-content indigo'>
+           <li><a href="disenos-electronicos" class="white-text">Diseños electronicos<i class="material-icons right">public</i></a></li>
+           <li><a href="disenos-acusticos" class="white-text">Diseños Acusticos<i class="material-icons right">visibility</i></a></li>
+           <li><a href="simulaciones-numericas" class="white-text">Simulaciones numéricas<i class="material-icons  right">accessibility</i></a></li>
+           <li><a href="monitoreo-remoto" class="white-text">Monitoreo remoto<i class="material-icons  right">star</i></a></li>
+           <li><a href="desarrollo-lab-view" class="white-text">Desarrollo Lab View<i class="material-icons  right">star</i></a></li>
+         </ul>
+
+    <li ng-class="{active: nav.isActive('/clientes')}"><a href="/clientes">CLIENTES <i class="material-icons  right">business</i></a></li>
+    <li ng-class="{active: nav.isActive('/contactenos')}"><a href="/contactenos">CONTÁCTENOS<i class="material-icons right">perm_phone_msg</i></a></li>
+    <li ng-class="{active: nav.isActive('/contactenos')}"><a href="/reportes">ESTADISTICAS<i class="material-icons right">trending_up</i></a></li>
+    <li ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/usuarios')}"><a href="/usuarios">USUARIOS</a></li>
+    <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a href="/signup">Sign up</a></li>
+    <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a href="/login">INICIAR SESIÓN <i class="material-icons  right">face</i></a></li>
+    <li ng-show="nav.isLoggedIn()"><a>Hello {{ nav.getCurrentUser().name }}</a> </li>
+    <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+    <li ng-show="nav.isLoggedIn()"><a href="/logout">Logout</a></li>
+
+  </ul>
+
+  <ul id="slide-out" class="side-nav">
+    <li ng-class="{active: nav.isActive('/nosotros')}"><a href="/nosotros">NUESTRA COMPAÑIA <i class="material-icons  right">business</i></a></li>
+    <!-- <li ng-class="{active: nav.isActive('/servicios')}"><a href="/servicios">SERVICIOS</a></li> -->
+    <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold active"><a class="collapsible-header waves-effect waves-indigo active">SERVICIOS</a>
+                        <div class="collapsible-body" style="display: block;">
+                            <ul >
+                                <li><a href="disenos-electronicos"> Diseños electronicos </a></li>
+                                <li><a href="disenos-acusticos"> Diseños acusticos </a></li>
+                                <li><a href="simulaciones-numericas"> Simulaciones numéricas </a></li>
+                                <li><a href="monitoreo-remoto"> Monitoreo Remoto </a></li>
+                                <li><a href="desarrollo-lab-view"> Desarrollo Lab View </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+    <li ng-class="{active: nav.isActive('/clientes')}"><a href="/clientes">CLIENTES <i class="material-icons  right">business</i></a></li>
+    <li ng-class="{active: nav.isActive('/contactenos')}"><a href="/contactenos">CONTÁCTENOS <i class="material-icons  right">perm_phone_msg</i></a></li>
+    <li ng-class="{active: nav.isActive('/contactenos')}"><a href="/reportes">ESTADISTICAS<i class="material-icons right">trending_up</i></a></li>
+    <li ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/usuarios')}"><a href="/usuarios">Usuarios</a></li>
+    <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a href="/signup">Sign up</a></li>
+    <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a href="/login">INICIAR SESION<i class="material-icons  right">face</i></a></li>
+    <li ng-show="nav.isLoggedIn()"><a>Hello {{ nav.getCurrentUser().name }}</a> </li>
+    <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+    <li ng-show="nav.isLoggedIn()"><a href="/logout">Logout</a></li>
+  </ul>
+
+
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  <!-- <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a> -->
+</nav>
+</div>
+
+<script charset="utf-8">
+
+
+  $('.button-collapse').sideNav({
+    menuWidth: 300,
+    closeOnClick: true
+  }
+);
+
+$('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: true, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+
+</script>
