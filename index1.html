@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-	<title>Colanta</title>
-	<link href="./img/favicons/favicon1.ico" rel="shortcut icon" type="image/x-icon">
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -23,12 +21,10 @@ var channelsLoaded = 0;
 // fieldList shows which field you want to load, and which axis to display that field on, 
 // the 'T' Temperature left axis, or the 'O' Other right axis.
 var channelKeys =[];
-channelKeys.push({channelNumber:63112, name:'Colanta',key:'XJUO056EK5V0LQ99',
-                  fieldList:[{field:1,axis:'O'},{field:2,axis:'T'}]});
-//channelKeys.push({channelNumber:92776, name:'G2 (Barranquilla)',key:'5139AFGLSIOGNHCY',
-  // fieldList:[{field:1,axis:'O'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'O'},{field:5,axis:'O'},{field:6,axis:'T'}]});
-//channelKeys.push({channelNumber:92775, name:'G1 (Santa Marta)',key:'2FXX114T1HHR4DVV',
-  // fieldList:[{field:1,axis:'O'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'O'},{field:5,axis:'O'},{field:6,axis:'T'}]});
+//channelKeys.push({channelNumber:71944, name:'temp wifi',key:'222DM9RMFGT6A3GE',
+   //fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'T'},{field:5,axis:'T'},{field:6,axis:'T'}]});
+channelKeys.push({channelNumber:63112, name:'Bluetooth',key:'XJUO056EK5V0LQ99',
+   fieldList:[{field:1,axis:'T'},{field:4,axis:'O'}]});
     
 // user's timezone offset
 var myOffset = new Date().getTimezoneOffset();
@@ -248,7 +244,7 @@ $(document).ready(function()
 		},
     tooltip: {
       valueDecimals: 1,
-      valueSuffix: '°F',
+      valueSuffix: '°C',
       xDateFormat:'%Y-%m-%d<br/>%1:%M:%S %p'
 			// reformat the tooltips so that local times are displayed
 			//formatter: function() {
