@@ -247,7 +247,7 @@ $(document).ready(function()
     tooltip: {
       valueDecimals: 1,
       valueSuffix: '°C',
-      xDateFormat:'%Y-%m-%d<br/>%1:%M:%S %p'
+      xDateFormat:'%Y-%m-%d<br/>%I:%M:%S %p'
 			// reformat the tooltips so that local times are displayed
 			//formatter: function() {
       //var d = new Date(this.x + (myOffset*60000));
@@ -260,8 +260,8 @@ $(document).ready(function()
       ordinal:false,
       min: Date.UTC(2013,02,28),
 			dateTimeLabelFormats : {
-        hour: '%l %p',
-        minute: '%l:%M %p'
+        hour: '%I %p',
+        minute: '%I:%M %p'
       },
       title: {
         text: 'test'
