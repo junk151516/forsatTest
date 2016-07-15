@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-	<title>Forsat</title>
-	<link href="./img/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<title>Eafit Nevera</title>
+	<link href="./img/favicons/favicon1.ico" rel="shortcut icon" type="image/x-icon">
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -17,7 +17,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!--<script src="https://www.thingspeak.com/assets/application-927d1479ab2235e91ae25cb56d33b211.js"
      type="text/javascript"></script>-->
-    <script src="./js/highstock.js"></script>
+	<script src="./js/highstock.js"></script>
     <script src="./js/exporting.js"></script>
     <script src="./js/export-csv.js"></script>
     <script type="text/javascript">
@@ -33,10 +33,10 @@ var channelsLoaded = 0;
 // fieldList shows which field you want to load, and which axis to display that field on, 
 // the 'T' Temperature left axis, or the 'O' Other right axis.
 var channelKeys =[];
-//channelKeys.push({channelNumber:71944, name:'temp wifi',key:'222DM9RMFGT6A3GE',
-   //fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'T'},{field:5,axis:'T'},{field:6,axis:'T'}]});
-channelKeys.push({channelNumber:126396, name:'Udea',key:'S1LCF4OU3GEME0R4',
-   fieldList:[{field:1,axis:'O'},{field:2,axis:'O'},{field:3,axis:'O'},{field:4,axis:'O'},{field:5,axis:'O'},{field:6,axis:'T'},{field:7,axis:'T'}]});
+channelKeys.push({channelNumber:63112, name:'temp wifi',key:'K24OF4CX99WPXXV7',
+   fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'O'},{field:4,axis:'O'},{field:5,axis:'O'},{field:6,axis:'T'},{field:7,axis:'T'},{field:8,axis:'T'}]});
+//channelKeys.push({channelNumber:104639, name:'Camion',key:'JAR022EPQDP5FBN3',
+  // fieldList:[{field:1,axis:'T'},{field:3,axis:'O'}]});
      
 // user's timezone offset
 var myOffset = new Date().getTimezoneOffset();
@@ -420,7 +420,7 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
 }
 
   </script>
-    <title>Nevera Haceb</title>
+    <title>Camion Colanta</title>
   </head>
   <body style="                      background-color: white;">
     <div id="chart-container" style="height: 600px;"><br>
@@ -458,6 +458,6 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
       <input id="Update" name="Update" type="checkbox" checked><span style="font-family: Lucida Grande;">Update
         Chart</span> <span id="Latency" style="font-family: Lucida Grande;">(Latency)</span>
     </div>
-	<p><iframe src="https://es.batchgeo.com/map/b12074f0711ab26f2d3971d5e9e07e74" frameborder="0" width="100%" height="550" style="border:1px solid #aaa;"></iframe></p><p><small>View <a href="https://es.batchgeo.com/map/b12074f0711ab26f2d3971d5e9e07e74">maps</a> in a full screen map</small></p>
+	
   </body>
 </html>
