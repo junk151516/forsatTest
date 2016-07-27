@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!--link rel="stylesheet prefetch" href="https://codepad.co/css/normalize.min.css"/-->
+	<link rel="stylesheet" type="text/css" href="./anim.css" media="screen" />
+
+<!--style> 
+	href="https://codepad.co/css/normalize.min.css"
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000000;
+  background: linear-gradient(to left, #000000 , #434343);
+}
+
+/* Atom */
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(189, 195, 199, 1);
+  z-index: 0;
+  opacity: 1;
+	animation-name: effect-3;
+	animation-duration: 5s, 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease, linear;
+}
+
+.wrapper::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -65px 0 0 -65px;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	opacity: 1;
+  z-index: 1
+}
+.wrapper::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -65px 0 0 -65px;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	opacity: 1;
+  z-index: 2;
+}
+
+.wrapper::after,
+.wrapper::before {
+	border: 4px solid rgba(189, 195, 199, 0.8);
+}
+
+.wrapper::after {
+	animation-name: effect-3, effect-1;
+	animation-duration: 5s, 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease, linear;
+}
+
+.wrapper::before {
+	animation-name: effect-3, effect-2;
+	animation-duration: 5s, 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease, linear;
+}
+
+@keyframes effect-1 {
+	0% { transform: perspective(1000px) rotate3d(1, 1, 1, 0deg) }
+	100% { transform: perspective(1000px) rotate3d(1, 1, 1, 360deg) }
+}
+
+@keyframes effect-2 {
+	0% { transform: perspective(1000px) rotate3d(1, -1, 1, 0deg) }
+	100% { transform: perspective(1000px) rotate3d(1, -1, 1, 360deg) }
+}
+
+@keyframes effect-3 {
+	0%, 100% { opacity: 0 }
+	25%, 75% { opacity: 1 }
+}
+
+
+    </style-->
+            
+    </head>
+<body>
+<div class="wrapper">
+  <div class="dot"></div>
+</div>
+<script type="text/javascript">
+    
+</script>
+</body>
+</html>

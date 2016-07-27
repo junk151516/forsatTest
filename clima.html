@@ -4,6 +4,8 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
 	<title>Clima</title>
 	<link href="./img/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="./anim.css" media="screen" />
+
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,6 +23,7 @@
     <script src="./js/exporting.js"></script>
     <script src="./js/export-csv.js"></script>
     <script type="text/javascript">
+	
       
       // Webpage Javascript to chart multiple ThingSpeak channels on two axis with navigator, load historical data, and export cvs data.
       // Public Domain, by turgo.
@@ -420,11 +423,17 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
 }
 
   </script>
-    <title>Alerta Climática</title>
+    <title>Alerta Climatica</title>
   </head>
   <body style="                      background-color: white;">
-    <div id="chart-container" style="height: 600px;"><br>
-      Espera un momento...<br>
+    <div id="chart-container" style="height: 600px;">
+	<br>Espera un momento...<br>
+	<div class="wrapper">
+	<div class="dot"></div>
+	</div>
+	
+      
+	
     </div>
 		<!--iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/plugins/19752"></iframe-->
 		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/121393/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperatura+ambiente&type=line"></iframe>
