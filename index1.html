@@ -2,8 +2,10 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-	<title>Colanta</title>
+	<title>laboratorioechavarria</title>
 	<link href="./img/favicons/favicon1.ico" rel="shortcut icon" type="image/x-icon">
+			<link rel="stylesheet" type="text/css" href="./anim.css" media="screen" />
+
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -35,8 +37,8 @@ var channelsLoaded = 0;
 var channelKeys =[];
 //channelKeys.push({channelNumber:71944, name:'temp wifi',key:'222DM9RMFGT6A3GE',
    //fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'T'},{field:5,axis:'T'},{field:6,axis:'T'}]});
-channelKeys.push({channelNumber:129160, name:'Camion',key:'XKG8H19OB60ZI7GR',
-   fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'T'},{field:5,axis:'T'}]});
+channelKeys.push({channelNumber:71944, name:'Nevera',key:'222DM9RMFGT6A3GE',
+   fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'}]});
      
 // user's timezone offset
 var myOffset = new Date().getTimezoneOffset();
@@ -425,6 +427,9 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
   <body style="                      background-color: white;">
     <div id="chart-container" style="height: 600px;"><br>
       Espera un momento...<br>
+	  <div class="wrapper">
+		<div class="dot"></div>
+		</div>
     </div>
 		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/plugins/19752"></iframe>
 
@@ -458,7 +463,6 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
       <input id="Update" name="Update" type="checkbox" checked><span style="font-family: Lucida Grande;">Update
         Chart</span> <span id="Latency" style="font-family: Lucida Grande;">(Latency)</span>
     </div>
-	<iframe src="http://10893.navixy.com/pro/applications/locator/?key=1ae4a644915cdc1abb5a32501c8b7315" width="900" height="400"></iframe>
-
+	
   </body>
 </html>
