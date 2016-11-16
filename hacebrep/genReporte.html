@@ -66,10 +66,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">Temperaturas en Congelador</a></li><li><a href="#4">Temperaturas en Conservador</a></li><li><a href="#5">Temperaturas en Conservador zona Frutas</a></li><li><a href="#6">Promedios Totales</a></li><li><a href="#7">Diagrama en torta de trabajo compresor</a></li><li><a href="#8">Consolidado del d&iacute;a anterior</a></li><li><a href="#9">Comparaci&oacute;n de temperaturas con apertura de puertas</a></li><li><a href="#10">Comparaci&oacute;n de temperaturas con trabajo de compresor</a></li><li><a href="#11">Comparaci&oacute;n de temperaturas con resistencia de descongelamiento</a></li><li><a href="#12">Porcentaje de trabajo Compresor</a></li></ul></div><h2>Temperaturas en Congelador<a name="3"></a></h2><pre class="codeoutput">Temperatura promedio en congelador -19.4011c
-</pre><img vspace="5" hspace="5" src="genReporte_01.png" alt=""> <h2>Temperaturas en Conservador<a name="4"></a></h2><pre class="codeoutput">Temperatura promedio en conservador 4.0269c
-</pre><img vspace="5" hspace="5" src="genReporte_02.png" alt=""> <h2>Temperaturas en Conservador zona Frutas<a name="5"></a></h2><pre class="codeoutput">Temperatura promedio en compartimento de frutas 5.8262c
-</pre><img vspace="5" hspace="5" src="genReporte_03.png" alt=""> <h2>Promedios Totales<a name="6"></a></h2><img vspace="5" hspace="5" src="genReporte_04.png" alt=""> <h2>Diagrama en torta de trabajo compresor<a name="7"></a></h2><img vspace="5" hspace="5" src="genReporte_05.png" alt=""> <h2>Consolidado del d&iacute;a anterior<a name="8"></a></h2><h2>Comparaci&oacute;n de temperaturas con apertura de puertas<a name="9"></a></h2><img vspace="5" hspace="5" src="genReporte_06.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con trabajo de compresor<a name="10"></a></h2><img vspace="5" hspace="5" src="genReporte_07.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con resistencia de descongelamiento<a name="11"></a></h2><img vspace="5" hspace="5" src="genReporte_08.png" alt=""> <h2>Porcentaje de trabajo Compresor<a name="12"></a></h2><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">Temperaturas en Congelador</a></li><li><a href="#4">Temperaturas en Conservador</a></li><li><a href="#5">Temperaturas en Conservador zona Frutas</a></li><li><a href="#6">Promedios Totales</a></li><li><a href="#7">Diagrama en torta de trabajo compresor</a></li><li><a href="#8">Consolidado del d&iacute;a anterior</a></li><li><a href="#9">Comparaci&oacute;n de temperaturas con apertura de puertas</a></li><li><a href="#10">Comparaci&oacute;n de temperaturas con trabajo de compresor</a></li><li><a href="#11">Comparaci&oacute;n de temperaturas con resistencia de descongelamiento</a></li><li><a href="#12">Porcentaje de trabajo Compresor</a></li></ul></div><h2>Temperaturas en Congelador<a name="3"></a></h2><pre class="codeoutput">Temperatura promedio en congelador -19.4011 &deg;C
+</pre><img vspace="5" hspace="5" src="genReporte_01.png" alt=""> <h2>Temperaturas en Conservador<a name="4"></a></h2><pre class="codeoutput">Temperatura promedio en conservador 4.0269  &deg;C
+</pre><img vspace="5" hspace="5" src="genReporte_02.png" alt=""> <h2>Temperaturas en Conservador zona Frutas<a name="5"></a></h2><pre class="codeoutput">Temperatura promedio en compartimento de frutas 5.8262 &deg;C
+</pre><img vspace="5" hspace="5" src="genReporte_03.png" alt=""> <h2>Promedios Totales<a name="6"></a></h2><img vspace="5" hspace="5" src="genReporte_04.png" alt=""> <h2>Diagrama en torta de trabajo compresor<a name="7"></a></h2><img vspace="5" hspace="5" src="genReporte_05.png" alt=""> <h2>Consolidado del d&iacute;a anterior<a name="8"></a></h2><h2>Comparaci&oacute;n de temperaturas con apertura de puertas<a name="9"></a></h2><img vspace="5" hspace="5" src="genReporte_06.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con trabajo de compresor<a name="10"></a></h2><img vspace="5" hspace="5" src="genReporte_07.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con resistencia de descongelamiento<a name="11"></a></h2><img vspace="5" hspace="5" src="genReporte_08.png" alt=""> <h2>Porcentaje de trabajo Compresor<a name="12"></a></h2><img vspace="5" hspace="5" src="genReporte_09.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 
 close all
@@ -139,7 +139,7 @@ axis tight % Adjust axis to fit the plot
 ax = gca; % Get the current axis object
 ax.XTick = 1:24; % Change the X-Tick to 24 hours
 legend(h2,'Average per hour')
-disp(['Temperatura promedio en congelador ' num2str(median(tMean)) 'c'])
+disp(['Temperatura promedio en congelador ' num2str(median(tMean)) ' °C'])
 pCongelador = tMean;
 %% Temperaturas en Conservador
 
@@ -186,7 +186,7 @@ ax = gca; % Get the current axis object
 ax.XTick = 1:24; % Change the X-Tick to 24 hours
 legend(h2,'Average per hour')
 m = median(tMean);
-disp(['Temperatura promedio en conservador ' num2str(median(tMean)) 'c'])
+disp(['Temperatura promedio en conservador ' num2str(median(tMean)) '  °C'])
 
 pConservador = tMean;
 %% Temperaturas en Conservador zona Frutas
@@ -234,7 +234,7 @@ ax = gca; % Get the current axis object
 ax.XTick = 1:24; % Change the X-Tick to 24 hours
 legend(h2,'Average per hour')
 m = median(tMean);
-disp(['Temperatura promedio en compartimento de frutas ' num2str(median(tMean)) 'c'])
+disp(['Temperatura promedio en compartimento de frutas ' num2str(median(tMean)) ' °C'])
 %% Promedios Totales
 figure
 hold on
@@ -372,6 +372,7 @@ legend({'Congelador','Conservador','Frutas','resistencia'},'Location','NE')
 
 
 %% Porcentaje de trabajo Compresor
+
 c2 = compresor;
 c2( c2 > 0 )= 2; 
 c2( c2 == 0 )= 1; 
@@ -382,8 +383,7 @@ labels = {'descanso','trabajo'};
 legend(labels,'Location','southoutside','Orientation','horizontal')
 hold off
 
-close all
-
-
+%close all
+%%
 ##### SOURCE END #####
 --></body></html>
