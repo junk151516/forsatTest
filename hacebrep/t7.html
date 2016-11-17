@@ -1,0 +1,405 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>t7</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-11-16"><meta name="DC.source" content="t7.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Temperaturas en Congelador</a></li><li><a href="#3">Temperaturas en Conservador</a></li><li><a href="#4">Temperaturas en Conservador zona Frutas</a></li><li><a href="#5">Promedios Totales</a></li><li><a href="#6">Diagrama en torta de trabajo compresor</a></li><li><a href="#7">Consolidado del d&iacute;a anterior</a></li><li><a href="#8">Comparaci&oacute;n de temperaturas con apertura de puertas</a></li><li><a href="#9">Comparaci&oacute;n de temperaturas con trabajo de compresor</a></li><li><a href="#10">Comparaci&oacute;n de temperaturas con resistencia de descongelamiento</a></li><li><a href="#11">Porcentaje de trabajo Compresor</a></li></ul></div><h2>Temperaturas en Congelador<a name="2"></a></h2><pre class="codeoutput">Temperatura promedio en congelador -19.1221 &deg;C
+</pre><img vspace="5" hspace="5" src="t7_01.png" alt=""> <h2>Temperaturas en Conservador<a name="3"></a></h2><pre class="codeoutput">Temperatura promedio en conservador 7.0636  &deg;C
+</pre><img vspace="5" hspace="5" src="t7_02.png" alt=""> <h2>Temperaturas en Conservador zona Frutas<a name="4"></a></h2><pre class="codeoutput">Temperatura promedio en compartimento de frutas 3.3223 &deg;C
+</pre><img vspace="5" hspace="5" src="t7_03.png" alt=""> <h2>Promedios Totales<a name="5"></a></h2><img vspace="5" hspace="5" src="t7_04.png" alt=""> <h2>Diagrama en torta de trabajo compresor<a name="6"></a></h2><img vspace="5" hspace="5" src="t7_05.png" alt=""> <h2>Consolidado del d&iacute;a anterior<a name="7"></a></h2><h2>Comparaci&oacute;n de temperaturas con apertura de puertas<a name="8"></a></h2><img vspace="5" hspace="5" src="t7_06.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con trabajo de compresor<a name="9"></a></h2><img vspace="5" hspace="5" src="t7_07.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con resistencia de descongelamiento<a name="10"></a></h2><img vspace="5" hspace="5" src="t7_08.png" alt=""> <h2>Porcentaje de trabajo Compresor<a name="11"></a></h2><img vspace="5" hspace="5" src="t7_09.png" alt=""> <p class="footer"><br><a href="http://www.forsatingenieria.com/servicios">by Forsat Ingenieria&reg; R</a><br></p></div><!--
+##### SOURCE BEGIN #####
+
+close all
+clc
+%
+% T2	56612
+% T3	57380
+% T4	58230
+% T5	58231
+% T6	58232
+% T7	58233
+% T8	58238
+% T9	58239
+% T10	58240
+% T11	58241
+% T12	58242
+% T13	58243
+% Channel ID to read data from
+readChannelID = 58233;
+% Specify date range
+dateRange = [datetime('24-Oct-2016'),datetime('today')];
+%dateRange = [datetime('yesterday'),datetime('today')];
+%dateRange = [datetime('March 7, 2016'),datetime('March 13, 2016')];
+% Read data including the timestamp, and channel information.
+[data,time,channelInfo] = thingSpeakRead(readChannelID,'Fields',1:8,'DateRange',dateRange);                    
+% Create variables to store different sorts of data
+compresor = data(:,1);
+ventilador = data(:,2);
+resistencia = data(:,3);
+puerta1 = data(:,4);
+puerta2 = data(:,5);
+congelador = data(:,6);
+conservador = data(:,7);
+frutas = data(:,8);
+
+
+%% Temperaturas en Congelador
+
+% Remove missing data
+idx = ~isnan(congelador);
+rawTemp = congelador(idx);
+newTime = time(idx);
+
+% Plot temperature for each day.
+figure
+hold on
+% Use dateshift and findgroups functions to bin the temperature data in
+% terms of individual day
+timeShift = dateshift(newTime,'start','day'); % Shift hour, minute, and second to the start of each day, i.e. 00:00:00
+dayGroup = findgroups(timeShift); % Group the shifted time in terms of day
+splitapply(@plot,second(newTime,'secondofday')/3600,rawTemp,dayGroup); % Apply the plot function to the temperature for each day by using the group defined above
+
+% ok Compute the absolute Max, Min, and Mean for each hour
+hourGroup = findgroups(hour(newTime)); % Create a vector of grouping number for each hour
+tMax = splitapply(@max,rawTemp,hourGroup); % Calculate the max for each hour
+tMin = splitapply(@min,rawTemp,hourGroup); % Calculate the min for each hour
+tMean = splitapply(@mean,rawTemp,hourGroup); % Calculate the mean for each hour
+
+% Prepare x and y data for the average and the variation area
+xHalf = [0,repelem(1:23,2),24]; % x coordinate at the end points for each interval (each hour)
+x = [xHalf, fliplr(xHalf)]; % x coordinate for variation area (including both bottom and top profiles)
+tMax = repelem(tMax,2); % y coordinate for max per hour
+tMin = repelem(tMin,2); % y coordinate for min per hour
+tMean = repelem(tMean,2);% y coordinate for mean per hour
+y = [tMin; flipud(tMax)]; % y coordinate for variation area (bottom and top)
+
+% Plot Statistics
+plot([0,24], [max(tMax),max(tMax)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Max as a horizontal line
+plot([0,24], [min(tMin),min(tMin)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Min as a horizontal line
+%h1 = fill(x,y, 'b', 'LineStyle', 'none', 'FaceAlpha', 0.1); % Highlight the variation area per hour
+h2 = plot(xHalf,tMean,'REPLACE_WITH_DASH_DASH','LineWidth',2); % Plot average per hour
+hold off
+title('Daily temperature freezer')
+ylabel('Temperature (C)')
+xlabel('Day Time')
+axis tight % Adjust axis to fit the plot
+%ylim([20 80]) % Adjust to allow space on the top and at the bottom of the axis
+ax = gca; % Get the current axis object
+ax.XTick = 1:24; % Change the X-Tick to 24 hours
+legend(h2,'Average per hour')
+disp(['Temperatura promedio en congelador ' num2str(median(tMean)) ' °C'])
+pCongelador = tMean;
+%% Temperaturas en Conservador
+
+% Remove missing data
+idx = ~isnan(conservador);
+rawTemp = conservador(idx);
+newTime = time(idx);
+
+% Plot temperature for each day.
+figure
+hold on
+% Use dateshift and findgroups functions to bin the temperature data in
+% terms of individual day
+timeShift = dateshift(newTime,'start','day'); % Shift hour, minute, and second to the start of each day, i.e. 00:00:00
+dayGroup = findgroups(timeShift); % Group the shifted time in terms of day
+splitapply(@plot,second(newTime,'secondofday')/3600,rawTemp,dayGroup); % Apply the plot function to the temperature for each day by using the group defined above
+
+% ok Compute the absolute Max, Min, and Mean for each hour
+hourGroup = findgroups(hour(newTime)); % Create a vector of grouping number for each hour
+tMax = splitapply(@max,rawTemp,hourGroup); % Calculate the max for each hour
+tMin = splitapply(@min,rawTemp,hourGroup); % Calculate the min for each hour
+tMean = splitapply(@mean,rawTemp,hourGroup); % Calculate the mean for each hour
+
+% Prepare x and y data for the average and the variation area
+xHalf = [0,repelem(1:23,2),24]; % x coordinate at the end points for each interval (each hour)
+x = [xHalf, fliplr(xHalf)]; % x coordinate for variation area (including both bottom and top profiles)
+tMax = repelem(tMax,2); % y coordinate for max per hour
+tMin = repelem(tMin,2); % y coordinate for min per hour
+tMean = repelem(tMean,2);% y coordinate for mean per hour
+y = [tMin; flipud(tMax)]; % y coordinate for variation area (bottom and top)
+
+% Plot Statistics
+plot([0,24], [max(tMax),max(tMax)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Max as a horizontal line
+plot([0,24], [min(tMin),min(tMin)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Min as a horizontal line
+%h1 = fill(x,y, 'b', 'LineStyle', 'none', 'FaceAlpha', 0.1); % Highlight the variation area per hour
+h2 = plot(xHalf,tMean,'REPLACE_WITH_DASH_DASH','LineWidth',2); % Plot average per hour
+hold off
+title('Daily temperature conservator')
+ylabel('Temperature (C)')
+xlabel('Day Time')
+axis tight % Adjust axis to fit the plot
+%ylim([20 80]) % Adjust to allow space on the top and at the bottom of the axis
+ax = gca; % Get the current axis object
+ax.XTick = 1:24; % Change the X-Tick to 24 hours
+legend(h2,'Average per hour')
+m = median(tMean);
+disp(['Temperatura promedio en conservador ' num2str(median(tMean)) '  °C'])
+
+pConservador = tMean;
+%% Temperaturas en Conservador zona Frutas
+
+% Remove missing data
+idx = ~isnan(frutas);
+rawTemp = frutas(idx);
+newTime = time(idx);
+
+% Plot temperature for each day.
+figure
+hold on
+% Use dateshift and findgroups functions to bin the temperature data in
+% terms of individual day
+timeShift = dateshift(newTime,'start','day'); % Shift hour, minute, and second to the start of each day, i.e. 00:00:00
+dayGroup = findgroups(timeShift); % Group the shifted time in terms of day
+splitapply(@plot,second(newTime,'secondofday')/3600,rawTemp,dayGroup); % Apply the plot function to the temperature for each day by using the group defined above
+
+% ok Compute the absolute Max, Min, and Mean for each hour
+hourGroup = findgroups(hour(newTime)); % Create a vector of grouping number for each hour
+tMax = splitapply(@max,rawTemp,hourGroup); % Calculate the max for each hour
+tMin = splitapply(@min,rawTemp,hourGroup); % Calculate the min for each hour
+tMean = splitapply(@mean,rawTemp,hourGroup); % Calculate the mean for each hour
+
+% Prepare x and y data for the average and the variation area
+xHalf = [0,repelem(1:23,2),24]; % x coordinate at the end points for each interval (each hour)
+x = [xHalf, fliplr(xHalf)]; % x coordinate for variation area (including both bottom and top profiles)
+tMax = repelem(tMax,2); % y coordinate for max per hour
+tMin = repelem(tMin,2); % y coordinate for min per hour
+tMean = repelem(tMean,2);% y coordinate for mean per hour
+y = [tMin; flipud(tMax)]; % y coordinate for variation area (bottom and top)
+
+% Plot Statistics
+plot([0,24], [max(tMax),max(tMax)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Max as a horizontal line
+plot([0,24], [min(tMin),min(tMin)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Min as a horizontal line
+%h1 = fill(x,y, 'b', 'LineStyle', 'none', 'FaceAlpha', 0.1); % Highlight the variation area per hour
+h2 = plot(xHalf,tMean,'REPLACE_WITH_DASH_DASH','LineWidth',2); % Plot average per hour
+hold off
+title('Daily temperature Fruits')
+ylabel('Temperature (C)')
+xlabel('Day Time')
+axis tight % Adjust axis to fit the plot
+%ylim([20 80]) % Adjust to allow space on the top and at the bottom of the axis
+ax = gca; % Get the current axis object
+ax.XTick = 1:24; % Change the X-Tick to 24 hours
+legend(h2,'Average per hour')
+m = median(tMean);
+disp(['Temperatura promedio en compartimento de frutas ' num2str(median(tMean)) ' °C'])
+%% Promedios Totales
+figure
+hold on
+pFrutas = tMean;
+plot(xHalf,[pFrutas, pConservador,pCongelador],'LineWidth',2); % Plot average per hour
+legend('Frutas','Conservador','Congelador')
+
+hold off
+%% Diagrama en torta de trabajo compresor
+c2 = compresor;
+c2( c2 > 0 )= 2; 
+c2( c2 == 0 )= 1; 
+figure
+hold on
+pie(hist(c2,unique(c2)))
+
+labels = {'descanso','trabajo'};
+legend(labels,'Location','southoutside','Orientation','horizontal')
+
+hold off
+
+%% Consolidado del día anterior 
+
+%dateRange = [datetime('24-Oct-2016'),datetime('today')];
+dateRange = [datetime('yesterday'),datetime('today')];
+%dateRange = [datetime('March 7, 2016'),datetime('March 13, 2016')];
+% Read data including the timestamp, and channel information.
+[data,time,channelInfo] = thingSpeakRead(readChannelID,'Fields',1:8,'DateRange',dateRange);
+compresor = data(:,1);
+ventilador = data(:,2);
+resistencia = data(:,3);
+puerta1 = data(:,4);
+puerta2 = data(:,5);
+congelador = data(:,6);
+conservador = data(:,7);
+frutas = data(:,8);
+%% Comparación de temperaturas con apertura de puertas
+
+idx = ~isnan(congelador);
+rawTemp = congelador(idx);
+newTime = time(idx);
+
+idx2 = ~isnan(conservador);
+rawTemp2 = conservador(idx2);
+newTime2 = time(idx2);
+
+idx3 = ~isnan(frutas);
+rawTemp3 = frutas(idx3);
+newTime3 = time(idx3);
+
+% Smooth the raw temperature data with local 60-point mean values
+ %smoothTemp = movmean(congelador(idx),60);
+
+
+% Fit the data for a trend line
+% [p,~,mu]= polyfit(datenum(newTime),rawTemp,1);
+% trend = polyval(p,datenum(newTime),[],mu);
+
+% Optional: fit the data by using the sum of eight sine functions
+% To use the fit function, the Curve Fitting Toolbox is required.
+% It can be downloaded here: http://www.mathworks.com/products/curvefitting/
+%f = fit(datenum(newTime),rawTemp,'sin8');
+
+% Plot the raw data, smooth data, trend and fitting curve
+figure
+hold on
+plot(newTime,rawTemp,'r') % Plot the raw temperature 
+plot(newTime,rawTemp2,'g') % Plot the raw temperature 
+plot(newTime,rawTemp3,'b') % Plot the raw temperature 
+ylabel('Temperatura (C)')
+yyaxis right
+%plot(newTime,compresor,'b') % Plot the raw temperature 
+%plot(newTime,resistencia,'b') % Plot the raw temperature 
+plot(newTime,puerta1) % Plot the raw temperature 
+
+ylabel('segundos tiempo de trabajo')
+
+%plot(newTime,smoothTemp,'g','LineWidth',1.5) % Plot the smoothing curve
+%plot(newTime,trend,'m','LineWidth',2) % Plot the trend line
+%plot(f) % Plot the fitting curve
+hold off
+xlim([datenum(time(1)) datenum(time(end))]) % Adjust the x-axis to properly display the curves
+xlabel('Hora')
+legend({'Congelador','Conservador','Frutas','puerta'},'Location','NE')
+
+%% Comparación de temperaturas con trabajo de compresor
+
+
+
+% Plot the raw data, smooth data, trend and fitting curve
+figure
+hold on
+plot(newTime,rawTemp,'r') % Plot the raw temperature 
+plot(newTime,rawTemp2,'g') % Plot the raw temperature 
+plot(newTime,rawTemp3,'b') % Plot the raw temperature 
+ylabel('Temperatura (C)')
+yyaxis right
+%plot(newTime,compresor,'b') % Plot the raw temperature 
+%plot(newTime,resistencia,'b') % Plot the raw temperature 
+plot(newTime,compresor) % Plot the raw temperature 
+
+ylabel('segundos tiempo de trabajo')
+
+%plot(newTime,smoothTemp,'g','LineWidth',1.5) % Plot the smoothing curve
+%plot(newTime,trend,'m','LineWidth',2) % Plot the trend line
+%plot(f) % Plot the fitting curve
+hold off
+xlim([datenum(time(1)) datenum(time(end))]) % Adjust the x-axis to properly display the curves
+xlabel('Hora')
+legend({'Congelador','Conservador','Frutas','Compresor'},'Location','NE')
+   
+%% Comparación de temperaturas con resistencia de descongelamiento
+
+
+figure
+hold on
+plot(newTime,rawTemp,'r') % Plot the raw temperature 
+plot(newTime,rawTemp2,'g') % Plot the raw temperature 
+plot(newTime,rawTemp3,'b') % Plot the raw temperature 
+ylabel('Temperatura (C)')
+yyaxis right
+%plot(newTime,compresor,'b') % Plot the raw temperature 
+%plot(newTime,resistencia,'b') % Plot the raw temperature 
+plot(newTime,resistencia) % Plot the raw temperature 
+
+ylabel('segundos tiempo de trabajo')
+
+%plot(newTime,smoothTemp,'g','LineWidth',1.5) % Plot the smoothing curve
+%plot(newTime,trend,'m','LineWidth',2) % Plot the trend line
+%plot(f) % Plot the fitting curve
+hold off
+xlim([datenum(time(1)) datenum(time(end))]) % Adjust the x-axis to properly display the curves
+xlabel('Hora')
+legend({'Congelador','Conservador','Frutas','resistencia'},'Location','NE')
+
+
+%% Porcentaje de trabajo Compresor
+
+c2 = compresor;
+c2( c2 > 0 )= 2; 
+c2( c2 == 0 )= 1; 
+figure
+hold on
+pie(hist(c2,unique(c2)))
+labels = {'descanso','trabajo'};
+legend(labels,'Location','southoutside','Orientation','horizontal')
+hold off
+
+%close all
+%%
+
+close all
+clc
+
+
+##### SOURCE END #####
+--></body></html>

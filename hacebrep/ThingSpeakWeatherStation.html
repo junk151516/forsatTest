@@ -1,0 +1,974 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ThingSpeakWeatherStation</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-11-08"><meta name="DC.source" content="ThingSpeakWeatherStation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Retrieve data from ThingSpeak channel</a></li><li><a href="#3">Temperature, Humidity, Pressure, Rain, WindSpeed, WindDirection histogram</a></li><li><a href="#4">Smooth Temperature and Trend</a></li><li><a href="#5">Daily Temperature Statistics</a></li><li><a href="#6">Compare with historical temperature data on March 7, 2011-2015</a></li><li><a href="#7">Temperature and Humidity 3D bar charts</a></li><li><a href="#8">Interpolation and contour for Temperature, Humidity and Pressure</a></li><li><a href="#9">Dew Point</a></li><li><a href="#10">Wind Compass and Feather</a></li><li><a href="#11">Instant Weather Flag</a></li></ul></div><pre class="codeinput"><span class="comment">% ThingSpeak Weather Station Data Analysis</span>
+<span class="comment">%</span>
+<span class="comment">% This script includes examples of reading data from ThingSpeak channel and</span>
+<span class="comment">% performing various kind of visualization on the data.</span>
+<span class="comment">%</span>
+<span class="comment">% Retrieve the data first (see the first section) before executing other sections.</span>
+<span class="comment">%</span>
+<span class="comment">% ThingSpeak Support Toolbox on File Exchange is required to run this script.</span>
+<span class="comment">% It can be downloaded here:</span>
+<span class="comment">% http://www.mathworks.com/matlabcentral/fileexchange/52244-thingspeak-support-toolbox</span>
+<span class="comment">%</span>
+</pre><h2>Retrieve data from ThingSpeak channel<a name="2"></a></h2><pre class="codeinput"><span class="comment">% Channel ID to read data from</span>
+readChannelID = 56612;
+<span class="comment">% Specify date range</span>
+dateRange = [datetime(<span class="string">'yesterday'</span>),datetime(<span class="string">'today'</span>)];
+<span class="comment">%dateRange = [datetime('March 7, 2016'),datetime('March 13, 2016')];</span>
+<span class="comment">% Read data including the timestamp, and channel information.</span>
+[data,time,channelInfo] = thingSpeakRead(readChannelID,<span class="string">'Fields'</span>,1:8,<span class="string">'DateRange'</span>,dateRange);
+<span class="comment">% Create variables to store different sorts of data</span>
+compresor = data(:,1);
+ventilador = data(:,2);
+resistencia = data(:,3);
+puerta1 = data(:,4);
+puerta2 = data(:,5);
+congelador = data(:,6);
+conservador = data(:,7);
+frutas = data(:,8);
+</pre><h2>Temperature, Humidity, Pressure, Rain, WindSpeed, WindDirection histogram<a name="3"></a></h2><pre class="codeinput"><span class="comment">% Create a figure to display plots</span>
+figure
+
+<span class="comment">% Temperature histogram</span>
+subplot(2,3,1) <span class="comment">% Create 2-by-3 axis on the same figure, and work on the first axis</span>
+histogram(congelador);
+title(channelInfo.FieldDescriptions{1});
+grid <span class="string">on</span>
+
+<span class="comment">% Humidity histogram</span>
+subplot(2,3,2)
+histogram(conservador);
+title(channelInfo.FieldDescriptions{2});
+grid <span class="string">on</span>
+
+<span class="comment">% Pressure histogram</span>
+subplot(2,3,3)
+histogram(frutas);
+title(channelInfo.FieldDescriptions{3});
+grid <span class="string">on</span>
+
+<span class="comment">% Rain fall histogram</span>
+subplot(2,3,4)
+histogram(puerta1);
+title(channelInfo.FieldDescriptions{4});
+grid <span class="string">on</span>
+
+<span class="comment">% WindSpeed histogram</span>
+subplot(2,3,5)
+histogram(puerta2);
+title(channelInfo.FieldDescriptions{5});
+grid <span class="string">on</span>
+
+<span class="comment">% Wind Direction histogram</span>
+rad = ventilador*pi/180; <span class="comment">% Convert to radians</span>
+rad = -rad+pi/2; <span class="comment">% Adjust the wind direction data to match map compass, such that North is equal to 0 degree</span>
+subplot(2,3,6)
+rose(rad,12) <span class="comment">% Plot the wind direction histogram in a polar axis</span>
+title(channelInfo.FieldDescriptions{7})
+ax = gca;
+ax.View = [-90 90]; <span class="comment">% Rotate axis 90 degrees counterclock-wise such that North is equal to 0 degree</span>
+</pre><img vspace="5" hspace="5" src="ThingSpeakWeatherStation_01.png" alt=""> <h2>Smooth Temperature and Trend<a name="4"></a></h2><pre class="codeinput"><span class="comment">% Remove missing data from the temperature variable, in order to perform</span>
+<span class="comment">% the fitting methods</span>
+idx = ~isnan(congelador);
+rawTemp = congelador(idx);
+newTime = time(idx);
+
+<span class="comment">% Smooth the raw temperature data with local 60-point mean values</span>
+ smoothTemp = movmean(congelador(idx),60);
+
+
+<span class="comment">% Fit the data for a trend line</span>
+[p,~,mu]= polyfit(datenum(newTime),rawTemp,1);
+trend = polyval(p,datenum(newTime),[],mu);
+
+<span class="comment">% Optional: fit the data by using the sum of eight sine functions</span>
+<span class="comment">% To use the fit function, the Curve Fitting Toolbox is required.</span>
+<span class="comment">% It can be downloaded here: http://www.mathworks.com/products/curvefitting/</span>
+f = fit(datenum(newTime),rawTemp,<span class="string">'sin8'</span>);
+
+<span class="comment">% Plot the raw data, smooth data, trend and fitting curve</span>
+figure
+hold <span class="string">on</span>
+plot(newTime,rawTemp,<span class="string">'b'</span>) <span class="comment">% Plot the raw temperature</span>
+plot(newTime,smoothTemp,<span class="string">'g'</span>,<span class="string">'LineWidth'</span>,1.5) <span class="comment">% Plot the smoothing curve</span>
+plot(newTime,trend,<span class="string">'m'</span>,<span class="string">'LineWidth'</span>,2) <span class="comment">% Plot the trend line</span>
+plot(f) <span class="comment">% Plot the fitting curve</span>
+hold <span class="string">off</span>
+xlim([datenum(time(1)) datenum(time(end))]) <span class="comment">% Adjust the x-axis to properly display the curves</span>
+xlabel(<span class="string">'Date'</span>)
+ylabel(<span class="string">'Temperature (F)'</span>)
+legend({<span class="string">'Raw Data'</span>,<span class="string">'Smooth Data'</span>,<span class="string">'Trend'</span>,<span class="string">'Fitting Curve'</span>},<span class="string">'Location'</span>,<span class="string">'NE'</span>)
+</pre><img vspace="5" hspace="5" src="ThingSpeakWeatherStation_02.png" alt=""> <h2>Daily Temperature Statistics<a name="5"></a></h2><pre class="codeinput"><span class="comment">% Remove missing data</span>
+idx = ~isnan(congelador);
+rawTemp = congelador(idx);
+newTime = time(idx);
+
+<span class="comment">% Plot temperature for each day.</span>
+figure
+hold <span class="string">on</span>
+<span class="comment">% Use dateshift and findgroups functions to bin the temperature data in</span>
+<span class="comment">% terms of individual day</span>
+timeShift = dateshift(newTime,<span class="string">'start'</span>,<span class="string">'day'</span>); <span class="comment">% Shift hour, minute, and second to the start of each day, i.e. 00:00:00</span>
+dayGroup = findgroups(timeShift); <span class="comment">% Group the shifted time in terms of day</span>
+splitapply(@plot,second(newTime,<span class="string">'secondofday'</span>)/3600,rawTemp,dayGroup); <span class="comment">% Apply the plot function to the temperature for each day by using the group defined above</span>
+
+<span class="comment">% Compute the absolute Max, Min, and Mean for each hour</span>
+hourGroup = findgroups(hour(newTime)); <span class="comment">% Create a vector of grouping number for each hour</span>
+tMax = splitapply(@max,rawTemp,hourGroup); <span class="comment">% Calculate the max for each hour</span>
+tMin = splitapply(@min,rawTemp,hourGroup); <span class="comment">% Calculate the min for each hour</span>
+tMean = splitapply(@mean,rawTemp,hourGroup); <span class="comment">% Calculate the mean for each hour</span>
+
+<span class="comment">% Prepare x and y data for the average and the variation area</span>
+xHalf = [0,repelem(1:23,2),24]; <span class="comment">% x coordinate at the end points for each interval (each hour)</span>
+x = [xHalf, fliplr(xHalf)]; <span class="comment">% x coordinate for variation area (including both bottom and top profiles)</span>
+tMax = repelem(tMax,2); <span class="comment">% y coordinate for max per hour</span>
+tMin = repelem(tMin,2); <span class="comment">% y coordinate for min per hour</span>
+tMean = repelem(tMean,2);<span class="comment">% y coordinate for mean per hour</span>
+y = [tMin; flipud(tMax)]; <span class="comment">% y coordinate for variation area (bottom and top)</span>
+
+<span class="comment">% Plot Statistics</span>
+plot([0,24], [max(tMax),max(tMax)],<span class="string">'.--k'</span>, <span class="string">'LineWidth'</span>,1.5) <span class="comment">% Plot global Max as a horizontal line</span>
+plot([0,24], [min(tMin),min(tMin)],<span class="string">'.--k'</span>, <span class="string">'LineWidth'</span>,1.5) <span class="comment">% Plot global Min as a horizontal line</span>
+h1 = fill(x,y, <span class="string">'b'</span>, <span class="string">'LineStyle'</span>, <span class="string">'none'</span>, <span class="string">'FaceAlpha'</span>, 0.1); <span class="comment">% Highlight the variation area per hour</span>
+h2 = plot(xHalf,tMean,<span class="string">'--'</span>,<span class="string">'LineWidth'</span>,2); <span class="comment">% Plot average per hour</span>
+hold <span class="string">off</span>
+title(<span class="string">'Daily temperature over the past week'</span>)
+ylabel(<span class="string">'Temperature (F)'</span>)
+xlabel(<span class="string">'Day Time'</span>)
+axis <span class="string">tight</span> <span class="comment">% Adjust axis to fit the plot</span>
+ylim([20 80]) <span class="comment">% Adjust to allow space on the top and at the bottom of the axis</span>
+ax = gca; <span class="comment">% Get the current axis object</span>
+ax.XTick = 1:24; <span class="comment">% Change the X-Tick to 24 hours</span>
+legend([h1,h2],<span class="string">'Variation per hour'</span>,<span class="string">'Average per hour'</span>)
+</pre><img vspace="5" hspace="5" src="ThingSpeakWeatherStation_03.png" alt=""> <h2>Compare with historical temperature data on March 7, 2011-2015<a name="6"></a></h2><pre class="codeinput"><span class="comment">% Load historical data</span>
+rawData = load(<span class="string">'March7'</span>); <span class="comment">% Load the data file named "March7" in the current folder.</span>
+rawData = struct2cell(rawData); <span class="comment">% Convert the structure rawData to cell, which allows numeric indexing without knowing the field name.</span>
+
+<span class="comment">% Calculate hourly Max, Min, and Mean for historical data</span>
+m = zeros(24,length(rawData)); <span class="comment">% Pre-allocate matrix</span>
+<span class="keyword">for</span> i = 1:length(rawData) <span class="comment">% Loop over all years (2011-2015)</span>
+    histData = rawData{i}; <span class="comment">% Get the temperature data for the i-th year</span>
+    hourGroup = findgroups(hour(histData.TimeEST)); <span class="comment">% Group for each hour</span>
+    m(:,i) = splitapply(@mean,histData.TemperatureF,hourGroup); <span class="comment">% Calculate the average temperature for each hour</span>
+<span class="keyword">end</span>
+histMax = max(m,[],2); <span class="comment">% Max per hour</span>
+histMin = min(m,[],2); <span class="comment">% Min per hour</span>
+histMean = mean(m,2); <span class="comment">% Mean per hour</span>
+
+<span class="comment">% Temperature on March 7,2016 per hour</span>
+temp = congelador(month(time)==3 &amp; day(time)==7);
+s = second(time(month(time)==3 &amp; day(time)==7),<span class="string">'secondofday'</span>); <span class="comment">% Coresponding time slot in seconds</span>
+s = s/3600; <span class="comment">% Convert to hours</span>
+
+<span class="comment">% Plot</span>
+figure
+<span class="comment">% In the first subplot, show the historical temperatures for each year</span>
+subplot(2,1,1)
+plot(m, <span class="string">'LineWidth'</span>,2)
+title(<span class="string">'Daily Temperature on March 7, 2011-2015'</span>)
+ylabel(<span class="string">'Temperature (F)'</span>)
+legend({<span class="string">'2011'</span>,<span class="string">'2012'</span>, <span class="string">'2013'</span>, <span class="string">'2014'</span>,<span class="string">'2015'</span>})
+ax = gca;
+ax.XTick = 1:24; <span class="comment">% Change the X-Tick to 24 hours</span>
+<span class="comment">% In the second subplot, compare the current temperature with historical data</span>
+subplot(2,1,2)
+hold <span class="string">on</span>
+plot(s,temp,<span class="string">'g'</span>, <span class="string">'LineWidth'</span>,2) <span class="comment">% Plot temperature on March 7, 2016</span>
+plot(histMax,<span class="string">'--'</span>,<span class="string">'LineWidth'</span>,2) <span class="comment">% Plot historical max</span>
+plot(histMin,<span class="string">'--'</span>,<span class="string">'LineWidth'</span>,2) <span class="comment">% Plot historical min</span>
+plot(histMean,<span class="string">'--'</span>,<span class="string">'LineWidth'</span>,2) <span class="comment">% Plot historical mean</span>
+hold <span class="string">off</span>
+title(<span class="string">'Daily Temperature on March 7 - Current v.s. History'</span>)
+ylabel(<span class="string">'Temperature (F)'</span>)
+legend({<span class="string">'March 7, 2016'</span>,<span class="string">'Historical Max'</span>, <span class="string">'Historical Min'</span>, <span class="string">'Historical Mean'</span>})
+ax = gca;
+ax.XTick = 1:24; <span class="comment">% Change the X-Tick to 24 hours</span>
+</pre><pre class="codeoutput">Warning: Ignoring extra legend entries. 
+</pre><img vspace="5" hspace="5" src="ThingSpeakWeatherStation_04.png" alt=""> <h2>Temperature and Humidity 3D bar charts<a name="7"></a></h2><pre class="codeinput"><span class="comment">% Create a day range vector</span>
+dayRange = day(dateRange(1):dateRange(2));
+<span class="comment">% Pre-allocate matrix</span>
+weatherData = zeros(length(dayRange),24);
+
+<span class="comment">% Generate temperature 3D bar chart</span>
+<span class="comment">% Get temperature per whole clock for each day</span>
+<span class="keyword">for</span> m = 1:length(dayRange) <span class="comment">% Loop over all days</span>
+    <span class="keyword">for</span> n = 1:24 <span class="comment">% Loop over 24 hours</span>
+        <span class="keyword">if</span> any(day(time)==dayRange(m) &amp; hour(time)==n); <span class="comment">% Check if data exist for this specific time</span>
+            hourlyData = congelador((day(time)==dayRange(m) &amp; hour(time)==n)); <span class="comment">% Pull out the hourly temperature from the matrix</span>
+            weatherData(m,n) = hourlyData(1); <span class="comment">% Assign the temperature at the time closest to the whole clock</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% Plot</span>
+figure
+h = bar3(datenum(dateRange(1):dateRange(2)), weatherData);
+<span class="keyword">for</span> k = 1:length(h) <span class="comment">% Change the face color for each bar</span>
+    h(k).CData = h(k).ZData;
+    h(k).FaceColor = <span class="string">'interp'</span>;
+<span class="keyword">end</span>
+title(<span class="string">'Temperature Distribution'</span>)
+xlabel(<span class="string">'Hour of Day'</span>)
+ylabel(<span class="string">'Date'</span>)
+datetick(<span class="string">'y'</span>,<span class="string">'mmm dd'</span>) <span class="comment">% Change the Y-Tick to display specified date format</span>
+ax = gca;
+ax.XTick = 1:24; <span class="comment">% Change the X-Tick to 24 hours</span>
+ax.YTickLabelRotation = 30; <span class="comment">% Rotate label for better display</span>
+colorbar <span class="comment">% Add a color bar to indicate the scaling of color</span>
+
+
+<span class="comment">% Generate humidity 3D bar chart</span>
+<span class="comment">% Get humidity per whole clock for each day</span>
+<span class="keyword">for</span> m = 1:length(dayRange) <span class="comment">% Loop over all days</span>
+    <span class="keyword">for</span> n = 1:24 <span class="comment">% Loop over 24 hours</span>
+        <span class="keyword">if</span> any(day(time)==dayRange(m) &amp; hour(time)==n); <span class="comment">% Check if data exist for this specific time</span>
+            hourlyData = conservador((day(time)==dayRange(m) &amp; hour(time)==n)); <span class="comment">% Pull out the hourly humidity from the matrix</span>
+            weatherData(m,n) = hourlyData(1); <span class="comment">% Assign the humidity at the time closest to the whole clock</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% Plot</span>
+figure
+h = bar3(datenum(dateRange(1):dateRange(2)), weatherData);
+<span class="keyword">for</span> k = 1:length(h) <span class="comment">% Change the face color for each bar</span>
+    h(k).CData = h(k).ZData;
+    h(k).FaceColor = <span class="string">'interp'</span>;
+<span class="keyword">end</span>
+title(<span class="string">'Humidity Distribution'</span>)
+xlabel(<span class="string">'Hour of Day'</span>)
+ylabel(<span class="string">'Date'</span>)
+datetick(<span class="string">'y'</span>,<span class="string">'mmm dd'</span>) <span class="comment">% Change the Y-Tick to display specified date format</span>
+ax = gca;
+ax.XTick = 1:24; <span class="comment">% Change the X-Tick to 24 hours</span>
+ax.YTickLabelRotation = 30; <span class="comment">% Rotate label for better display</span>
+colorbar <span class="comment">% Add a color bar to indicate the scaling of color</span>
+</pre><img vspace="5" hspace="5" src="ThingSpeakWeatherStation_05.png" alt=""> <img vspace="5" hspace="5" src="ThingSpeakWeatherStation_06.png" alt=""> <h2>Interpolation and contour for Temperature, Humidity and Pressure<a name="8"></a></h2><pre class="codeinput"><span class="comment">% Replace missing data by interpolation, rather than removing the missing</span>
+<span class="comment">% data directly from the variable. This allows to keep the dimension of the</span>
+<span class="comment">% array being consistent</span>
+xNew = linspace(1,size(data,1),100)'; <span class="comment">% Create new x coordinates</span>
+tNew = interp1(congelador(~isnan(congelador)),xNew,<span class="string">'linear'</span>,<span class="string">'extrap'</span>); <span class="comment">% Temperature interpolation. Extrapolation is applied here in case that the last entry is NaN.</span>
+hNew = interp1(conservador(~isnan(conservador)),xNew,<span class="string">'linear'</span>,<span class="string">'extrap'</span>); <span class="comment">% Humidity interpolation</span>
+pNew = interp1(frutas(~isnan(frutas)),xNew,<span class="string">'linear'</span>,<span class="string">'extrap'</span>); <span class="comment">% Pressure interpolation</span>
+
+<span class="comment">% Find the index of the max pressure</span>
+[pMax,idx] = max(pNew);
+
+<span class="comment">% Create surface fitting data</span>
+sf = fit([tNew,hNew],pNew,<span class="string">'linearinterp'</span>);
+
+<span class="comment">% Plot</span>
+figure
+hsf = plot(sf,[tNew,hNew],pNew); <span class="comment">% Plot the surface with nodes. This plot function is provided in Curve Fitting Toolbox. The output is an array of a surface object and a line object.</span>
+hsf(1).EdgeColor = <span class="string">'interp'</span>; <span class="comment">% Change face edge color of the surface</span>
+hsf(1).FaceAlpha = 0.5; <span class="comment">% Change the transparency of the surface</span>
+xlabel(<span class="string">'Temperature'</span>)
+ylabel(<span class="string">'Humidity'</span>)
+zlabel(<span class="string">'Pressure'</span>)
+title(<span class="string">'Linear Interpolation Surface'</span>)
+
+<span class="comment">% 2D View with the location of max pressure</span>
+figure
+hsf = plot(sf); <span class="comment">% Plot the surface only</span>
+hsf.EdgeColor = <span class="string">'interp'</span>; <span class="comment">% Change face edge color</span>
+hold <span class="string">on</span>
+plot3(tNew(idx),hNew(idx),pMax,<span class="string">'r.'</span>, <span class="string">'MarkerSize'</span>,30) <span class="comment">% Plot the location of max pressure</span>
+text(tNew(idx)+2,hNew(idx)+2,pMax,[<span class="string">'P= '</span>,num2str(pMax),<span class="string">', T='</span>,<span class="keyword">...</span>
+    num2str(tNew(idx)),<span class="string">', H='</span>,num2str(hNew(idx))]) <span class="comment">% Display the values at the location above</span>
+title(<span class="string">'Contour of the Pressure'</span>)
+xlabel(<span class="string">'Temperature'</span>)
+ylabel(<span class="string">'Humidity'</span>)
+grid <span class="string">off</span>
+view(2) <span class="comment">% Set the view to 2D, i.e., observing the plot from top to bottom along z-axis</span>
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="ThingSpeakWeatherStation_07.png" alt=""> <img vspace="5" hspace="5" src="ThingSpeakWeatherStation_08.png" alt=""> <h2>Dew Point<a name="9"></a></h2><pre class="codeinput"><span class="comment">% Convert temperature from Fahrenheit to Celsius</span>
+tempC = (5/9)*(congelador-32);
+
+<span class="comment">% Calculate dew point. Refer to Wiki (https://en.wikipedia.org/wiki/Dew_point) for the formula and more details</span>
+<span class="comment">% Specify the constants for water vapor (b) and barometric (c) pressure.</span>
+b = 17.67;
+c = 243.5;
+<span class="comment">% Calculate the intermediate value 'gamma'</span>
+gamma = log(conservador/100) + b*tempC ./ (c+tempC);
+<span class="comment">% Calculate dew point in Celsius</span>
+dewPoint = c*gamma ./ (b-gamma);
+
+<span class="comment">% Convert to dew point in Fahrenheit</span>
+dewPointF = (dewPoint*1.8) + 32;
+
+<span class="comment">% Plot</span>
+figure
+hold <span class="string">on</span>
+plot(time, dewPointF,<span class="string">'d'</span>) <span class="comment">% Plot dew points</span>
+xlabel(<span class="string">'Time'</span>)
+ylabel(<span class="string">'Dew Point'</span>)
+xlim([datenum(time(1)) datenum(time(end))]) <span class="comment">% Adjust the x-axis limits</span>
+fill([xlim fliplr(xlim)], [68 68 80 80], <span class="string">'r'</span>, <span class="string">'LineStyle'</span>, <span class="string">'none'</span>, <span class="string">'FaceAlpha'</span>, 0.1) <span class="comment">% Highlight the uncomfortable zone</span>
+text(0.7*datenum(time(1)) + 0.3*datenum(time(end)), 75, <span class="string">'Uncomfortable'</span>, <span class="string">'FontWeight'</span>,<span class="string">'bold'</span>) <span class="comment">% Add text for the zone</span>
+fill([xlim fliplr(xlim)], [50 50 68 68], <span class="string">'g'</span>, <span class="string">'LineStyle'</span>, <span class="string">'none'</span>, <span class="string">'FaceAlpha'</span>, 0.1) <span class="comment">% Highlight the comfortable zone</span>
+text(0.7*datenum(time(1)) + 0.3*datenum(time(end)), 60, <span class="string">'Comfortable'</span>, <span class="string">'FontWeight'</span>,<span class="string">'bold'</span>) <span class="comment">% Add text for the zone</span>
+fill([xlim fliplr(xlim)], [min(ylim) min(ylim) 50 50], <span class="string">'y'</span>, <span class="string">'LineStyle'</span>, <span class="string">'none'</span>, <span class="string">'FaceAlpha'</span>, 0.1) <span class="comment">% Highlight the dry zone</span>
+text(0.65*datenum(time(1)) + 0.35*datenum(time(end)), 20, <span class="string">'Dry'</span>, <span class="string">'FontWeight'</span>,<span class="string">'bold'</span>) <span class="comment">% Add text for the zone</span>
+hold <span class="string">off</span>
+</pre><pre class="codeoutput">Warning: Imaginary parts of complex X and/or Y arguments ignored 
+</pre><img vspace="5" hspace="5" src="ThingSpeakWeatherStation_09.png" alt=""> <h2>Wind Compass and Feather<a name="10"></a></h2><pre class="codeinput"><span class="comment">% Specify the latest n+1 wind directions to be displayed</span>
+n = 9;
+
+<span class="comment">% Convert to radians</span>
+rad = ventilador*pi/180;
+
+<span class="comment">% Create a feather plot</span>
+<span class="comment">% Remove missing data and any wind speed with value 0</span>
+idx = (~isnan(rad)) &amp; (~isnan(puerta2)) &amp; (puerta2~=0);
+<span class="comment">% Convert polar coordinates to Cartesian. Note that dividing by the maximum</span>
+<span class="comment">% wind speed allows to scale the length of each arrow by its relative wind</span>
+<span class="comment">% speed, rather than the wind direction.</span>
+[x,y] = pol2cart(rad(idx),puerta2(idx)/max(puerta2(idx)));
+<span class="comment">% Plot</span>
+figure
+subplot(2,1,2)
+feather(x((end-n):end),y((end-n):end)) <span class="comment">% Plot the feather</span>
+xlim([0 n+2]) <span class="comment">% Adjust the x-axis</span>
+ylim([-1 1]) <span class="comment">% Adjust the y-axis</span>
+xlabel([<span class="string">'The last '</span>,num2str(n+1),<span class="string">' wind direction'</span>]) <span class="comment">% Add x lable</span>
+title(<span class="string">'Wind Direction Changes'</span>)
+grid <span class="string">on</span>
+ax = gca;
+ax.YTickLabel = {}; <span class="comment">% Hide the Y-Tick</span>
+ax.XTick = 1:(n+1); <span class="comment">% Adjust the X-Tick for n+1 data</span>
+
+<span class="comment">% Create a compass plot</span>
+<span class="comment">% Adjust the wind direction to match map compass, such that North is equal to 0 degree</span>
+rad = -rad+pi/2;
+<span class="comment">% Calculate the cosine component</span>
+u = cos(rad) .* puerta2; <span class="comment">% x coordinate of wind speed on circular plot</span>
+<span class="comment">% Calculate the sine component</span>
+v = sin(rad) .* puerta2; <span class="comment">% y coordinate of wind speed on circular plot</span>
+<span class="comment">% Plot</span>
+subplot(2,1,1)
+compass(u((end-n):end),v((end-n):end)) <span class="comment">% Plot compass</span>
+title(<span class="string">'Wind Compass'</span>)
+ax = gca;
+ax.View = [-90 90]; <span class="comment">% Rotate axis 90 degrees counterclock-wise such that North is equal to 0 degree</span>
+</pre><pre class="codeoutput error">Error using .*
+Matrix dimensions must agree.
+
+Error in pol2cart (line 21)
+x = r.*cos(th);
+
+Error in ThingSpeakWeatherStation (line 362)
+[x,y] = pol2cart(rad(idx),puerta2(idx)/max(puerta2(idx)));
+</pre><h2>Instant Weather Flag<a name="11"></a></h2><pre class="codeinput"><span class="comment">% Convert to radians</span>
+theta = ventilador(end)*pi/180;
+
+<span class="comment">% Covert wind speed to a relative angle of the wind flag with z axis, by</span>
+<span class="comment">% assuming the max wind speed is 5mph.</span>
+maxWindSpeed = 5;
+speedAngle = pi/2*puerta2(end)/maxWindSpeed;
+ytheta = pi-speedAngle;
+
+<span class="comment">% Create the cone as a flag</span>
+<span class="comment">% Specify the radius of the cone</span>
+ConeRadius = 0.1;
+<span class="comment">% Create coordinate limits and rotation matrix</span>
+xMax = 1.5;
+xMin = -xMax;
+yMax = 1.5;
+yMin = -yMax;
+zMax = 1.5;
+zMin = -0.5;
+yRotate = [cos(ytheta) 0 sin(ytheta);
+           0 1 0;
+           -sin(ytheta) 0 cos(ytheta)];
+zRotate = [cos(theta) -sin(theta) 0;
+           sin(theta) cos(theta) 0;
+           0 0 1];
+<span class="comment">% Create the cone surface data</span>
+t = [0;ConeRadius];
+[X,Y,Z]=cylinder(t,50);
+<span class="comment">% Adjust the direction of the cone flag such that the cone is pointing down</span>
+<span class="comment">% along z-axis</span>
+XYZ = zRotate*(yRotate*[X(2,:);Y(2,:);Z(2,:)]);
+X(2,:) = XYZ(1,:); <span class="comment">% Pull out x coordinate of the cone</span>
+Y(2,:) = XYZ(2,:); <span class="comment">% Pull out y coordinate of the cone</span>
+Z(2,:) = XYZ(3,:); <span class="comment">% Pull out z coordinate of the cone</span>
+Z = Z + zMax; <span class="comment">% Raise the flag to the top of the post</span>
+
+<span class="comment">% Plot</span>
+figure
+c = jet; <span class="comment">% Define the colormap</span>
+
+<span class="comment">% Plot the cone and use the instant temperature data to display its color</span>
+h = surf(X,Y,Z,<span class="string">'FaceColor'</span>, c(round(congelador(end)/100*64),:),<span class="keyword">...</span>
+    <span class="string">'LineStyle'</span>,<span class="string">'none'</span>,<span class="string">'FaceAlpha'</span>,0.8,<span class="string">'FaceLighting'</span>,<span class="string">'gouraud'</span>);
+<span class="comment">% Add lights to adjust the color of the cone</span>
+light(<span class="string">'Position'</span>,[xMin 0 0],<span class="string">'Color'</span>,c(round(congelador(end)/100*64),:))
+light(<span class="string">'Position'</span>,[xMax 0 0],<span class="string">'Color'</span>,c(round(congelador(end)/100*64),:))
+light(<span class="string">'Position'</span>,[0 yMax 0],<span class="string">'Color'</span>,c(round(congelador(end)/100*64),:))
+light(<span class="string">'Position'</span>,[0 yMin 0],<span class="string">'Color'</span>,c(round(congelador(end)/100*64),:))
+
+<span class="comment">% Plot directions and the vertical post</span>
+hold <span class="string">on</span>
+plot3(0,0,zMax,<span class="string">'k.'</span>, <span class="string">'MarkerSize'</span>,25) <span class="comment">% Post</span>
+plot3([0 0],[0 0],[0 zMax],<span class="string">'k'</span>,<span class="string">'LineWidth'</span>,3) <span class="comment">% Top node of the post</span>
+plot3([xMin xMax],[0 0],[0 0],<span class="string">'k'</span>) <span class="comment">% WE directions</span>
+plot3([0 0],[yMin yMax],[0 0],<span class="string">'k'</span>) <span class="comment">% NS directions</span>
+
+<span class="comment">% Plot auxiliary projection to help identify the direction where the flag</span>
+<span class="comment">% points to</span>
+plot3([cos(theta)*sin(speedAngle) cos(theta)*sin(speedAngle)],<span class="keyword">...</span>
+        [0 sin(theta)*sin(speedAngle)],[0 0],<span class="string">'k--'</span>)
+plot3([0 cos(theta)*sin(speedAngle)],[sin(theta)*sin(speedAngle) sin(theta)*sin(speedAngle)],[0 0],<span class="string">'k--'</span>)
+plot3([cos(theta)*sin(speedAngle) cos(theta)*sin(speedAngle)],<span class="keyword">...</span>
+    [sin(theta)*sin(speedAngle) sin(theta)*sin(speedAngle)],[0 zMax-cos(speedAngle)],<span class="string">'k--'</span>)
+hold <span class="string">off</span>
+
+<span class="comment">% Add direction letters, color and annotations</span>
+text([0,0,xMax,xMin,0], [yMax,yMin,0,0,0], [0.05,0,0,-0.05,zMax+0.15],<span class="keyword">...</span>
+    {<span class="string">'N'</span>,<span class="string">'S'</span>,<span class="string">'E'</span>,<span class="string">'W'</span>,[<span class="string">'Wind Speed = '</span>,num2str(round(puerta2(end),1)),<span class="string">'mph'</span>]})
+colormap(<span class="string">'jet'</span>)
+cb = colorbar; <span class="comment">% Get the colorbar object</span>
+colorbar(<span class="string">'Ticks'</span>,linspace(cb.Limits(1), cb.Limits(2),6),<span class="keyword">...</span>
+         <span class="string">'TickLabels'</span>,{<span class="string">'Freeze'</span>,<span class="string">'Cold'</span>,<span class="string">'Cool'</span>,<span class="string">'Neutral'</span>,<span class="string">'Warm'</span>,<span class="string">'Hot'</span>}) <span class="comment">% Label the color bar in terms of the human feeling about the temperature</span>
+title(<span class="string">'Weather Flag'</span>)
+axis <span class="string">equal</span>
+axis <span class="string">off</span>
+</pre><p class="footer">Copyright 2016 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% ThingSpeak Weather Station Data Analysis
+%
+% This script includes examples of reading data from ThingSpeak channel and
+% performing various kind of visualization on the data. 
+%
+% Retrieve the data first (see the first section) before executing other sections. 
+%
+% ThingSpeak Support Toolbox on File Exchange is required to run this script.
+% It can be downloaded here:
+% http://www.mathworks.com/matlabcentral/fileexchange/52244-thingspeak-support-toolbox
+%
+% Copyright 2016 The MathWorks, Inc.
+
+
+%% Retrieve data from ThingSpeak channel
+
+% Channel ID to read data from
+readChannelID = 56612;
+% Specify date range
+dateRange = [datetime('yesterday'),datetime('today')];
+%dateRange = [datetime('March 7, 2016'),datetime('March 13, 2016')];
+% Read data including the timestamp, and channel information.
+[data,time,channelInfo] = thingSpeakRead(readChannelID,'Fields',1:8,'DateRange',dateRange);                    
+% Create variables to store different sorts of data
+compresor = data(:,1);
+ventilador = data(:,2);
+resistencia = data(:,3);
+puerta1 = data(:,4);
+puerta2 = data(:,5);
+congelador = data(:,6);
+conservador = data(:,7);
+frutas = data(:,8);
+
+
+
+
+%% Temperature, Humidity, Pressure, Rain, WindSpeed, WindDirection histogram
+
+% Create a figure to display plots
+figure
+
+% Temperature histogram
+subplot(2,3,1) % Create 2-by-3 axis on the same figure, and work on the first axis
+histogram(congelador);
+title(channelInfo.FieldDescriptions{1});
+grid on
+
+% Humidity histogram
+subplot(2,3,2)
+histogram(conservador);
+title(channelInfo.FieldDescriptions{2});
+grid on
+
+% Pressure histogram
+subplot(2,3,3)
+histogram(frutas);
+title(channelInfo.FieldDescriptions{3});
+grid on
+
+% Rain fall histogram
+subplot(2,3,4)
+histogram(puerta1);
+title(channelInfo.FieldDescriptions{4});
+grid on
+
+% WindSpeed histogram
+subplot(2,3,5)
+histogram(puerta2);
+title(channelInfo.FieldDescriptions{5});
+grid on
+
+% Wind Direction histogram
+rad = ventilador*pi/180; % Convert to radians
+rad = -rad+pi/2; % Adjust the wind direction data to match map compass, such that North is equal to 0 degree
+subplot(2,3,6)
+rose(rad,12) % Plot the wind direction histogram in a polar axis 
+title(channelInfo.FieldDescriptions{7})
+ax = gca;
+ax.View = [-90 90]; % Rotate axis 90 degrees counterclock-wise such that North is equal to 0 degree
+
+
+%% Smooth Temperature and Trend
+
+% Remove missing data from the temperature variable, in order to perform
+% the fitting methods
+idx = ~isnan(congelador);
+rawTemp = congelador(idx);
+newTime = time(idx);
+
+% Smooth the raw temperature data with local 60-point mean values
+ smoothTemp = movmean(congelador(idx),60);
+
+
+% Fit the data for a trend line
+[p,~,mu]= polyfit(datenum(newTime),rawTemp,1);
+trend = polyval(p,datenum(newTime),[],mu);
+
+% Optional: fit the data by using the sum of eight sine functions
+% To use the fit function, the Curve Fitting Toolbox is required.
+% It can be downloaded here: http://www.mathworks.com/products/curvefitting/
+f = fit(datenum(newTime),rawTemp,'sin8');
+
+% Plot the raw data, smooth data, trend and fitting curve
+figure
+hold on
+plot(newTime,rawTemp,'b') % Plot the raw temperature 
+plot(newTime,smoothTemp,'g','LineWidth',1.5) % Plot the smoothing curve
+plot(newTime,trend,'m','LineWidth',2) % Plot the trend line
+plot(f) % Plot the fitting curve
+hold off
+xlim([datenum(time(1)) datenum(time(end))]) % Adjust the x-axis to properly display the curves
+xlabel('Date')
+ylabel('Temperature (F)')
+legend({'Raw Data','Smooth Data','Trend','Fitting Curve'},'Location','NE')
+
+
+%% Daily Temperature Statistics
+
+% Remove missing data
+idx = ~isnan(congelador);
+rawTemp = congelador(idx);
+newTime = time(idx);
+
+% Plot temperature for each day. 
+figure
+hold on
+% Use dateshift and findgroups functions to bin the temperature data in
+% terms of individual day
+timeShift = dateshift(newTime,'start','day'); % Shift hour, minute, and second to the start of each day, i.e. 00:00:00
+dayGroup = findgroups(timeShift); % Group the shifted time in terms of day
+splitapply(@plot,second(newTime,'secondofday')/3600,rawTemp,dayGroup); % Apply the plot function to the temperature for each day by using the group defined above
+
+% Compute the absolute Max, Min, and Mean for each hour 
+hourGroup = findgroups(hour(newTime)); % Create a vector of grouping number for each hour
+tMax = splitapply(@max,rawTemp,hourGroup); % Calculate the max for each hour
+tMin = splitapply(@min,rawTemp,hourGroup); % Calculate the min for each hour
+tMean = splitapply(@mean,rawTemp,hourGroup); % Calculate the mean for each hour
+
+% Prepare x and y data for the average and the variation area
+xHalf = [0,repelem(1:23,2),24]; % x coordinate at the end points for each interval (each hour)
+x = [xHalf, fliplr(xHalf)]; % x coordinate for variation area (including both bottom and top profiles)
+tMax = repelem(tMax,2); % y coordinate for max per hour
+tMin = repelem(tMin,2); % y coordinate for min per hour
+tMean = repelem(tMean,2);% y coordinate for mean per hour
+y = [tMin; flipud(tMax)]; % y coordinate for variation area (bottom and top)
+
+% Plot Statistics
+plot([0,24], [max(tMax),max(tMax)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Max as a horizontal line
+plot([0,24], [min(tMin),min(tMin)],'.REPLACE_WITH_DASH_DASHk', 'LineWidth',1.5) % Plot global Min as a horizontal line
+h1 = fill(x,y, 'b', 'LineStyle', 'none', 'FaceAlpha', 0.1); % Highlight the variation area per hour
+h2 = plot(xHalf,tMean,'REPLACE_WITH_DASH_DASH','LineWidth',2); % Plot average per hour
+hold off
+title('Daily temperature over the past week')
+ylabel('Temperature (F)')
+xlabel('Day Time')
+axis tight % Adjust axis to fit the plot
+ylim([20 80]) % Adjust to allow space on the top and at the bottom of the axis
+ax = gca; % Get the current axis object
+ax.XTick = 1:24; % Change the X-Tick to 24 hours 
+legend([h1,h2],'Variation per hour','Average per hour')
+
+
+%% Compare with historical temperature data on March 7, 2011-2015
+
+% Load historical data
+rawData = load('March7'); % Load the data file named "March7" in the current folder.
+rawData = struct2cell(rawData); % Convert the structure rawData to cell, which allows numeric indexing without knowing the field name.
+
+% Calculate hourly Max, Min, and Mean for historical data
+m = zeros(24,length(rawData)); % Pre-allocate matrix
+for i = 1:length(rawData) % Loop over all years (2011-2015)
+    histData = rawData{i}; % Get the temperature data for the i-th year
+    hourGroup = findgroups(hour(histData.TimeEST)); % Group for each hour
+    m(:,i) = splitapply(@mean,histData.TemperatureF,hourGroup); % Calculate the average temperature for each hour
+end
+histMax = max(m,[],2); % Max per hour
+histMin = min(m,[],2); % Min per hour
+histMean = mean(m,2); % Mean per hour
+
+% Temperature on March 7,2016 per hour
+temp = congelador(month(time)==3 & day(time)==7);
+s = second(time(month(time)==3 & day(time)==7),'secondofday'); % Coresponding time slot in seconds
+s = s/3600; % Convert to hours
+
+% Plot
+figure
+% In the first subplot, show the historical temperatures for each year
+subplot(2,1,1) 
+plot(m, 'LineWidth',2)
+title('Daily Temperature on March 7, 2011-2015')
+ylabel('Temperature (F)')
+legend({'2011','2012', '2013', '2014','2015'})
+ax = gca;
+ax.XTick = 1:24; % Change the X-Tick to 24 hours
+% In the second subplot, compare the current temperature with historical data
+subplot(2,1,2) 
+hold on
+plot(s,temp,'g', 'LineWidth',2) % Plot temperature on March 7, 2016
+plot(histMax,'REPLACE_WITH_DASH_DASH','LineWidth',2) % Plot historical max
+plot(histMin,'REPLACE_WITH_DASH_DASH','LineWidth',2) % Plot historical min
+plot(histMean,'REPLACE_WITH_DASH_DASH','LineWidth',2) % Plot historical mean
+hold off
+title('Daily Temperature on March 7 - Current v.s. History')
+ylabel('Temperature (F)')
+legend({'March 7, 2016','Historical Max', 'Historical Min', 'Historical Mean'})
+ax = gca;
+ax.XTick = 1:24; % Change the X-Tick to 24 hours 
+
+
+%% Temperature and Humidity 3D bar charts
+
+% Create a day range vector
+dayRange = day(dateRange(1):dateRange(2));
+% Pre-allocate matrix
+weatherData = zeros(length(dayRange),24);
+
+% Generate temperature 3D bar chart
+% Get temperature per whole clock for each day
+for m = 1:length(dayRange) % Loop over all days
+    for n = 1:24 % Loop over 24 hours
+        if any(day(time)==dayRange(m) & hour(time)==n); % Check if data exist for this specific time
+            hourlyData = congelador((day(time)==dayRange(m) & hour(time)==n)); % Pull out the hourly temperature from the matrix
+            weatherData(m,n) = hourlyData(1); % Assign the temperature at the time closest to the whole clock
+        end
+    end
+end
+
+% Plot
+figure
+h = bar3(datenum(dateRange(1):dateRange(2)), weatherData);
+for k = 1:length(h) % Change the face color for each bar
+    h(k).CData = h(k).ZData;
+    h(k).FaceColor = 'interp';
+end
+title('Temperature Distribution')
+xlabel('Hour of Day')
+ylabel('Date')
+datetick('y','mmm dd') % Change the Y-Tick to display specified date format 
+ax = gca;
+ax.XTick = 1:24; % Change the X-Tick to 24 hours 
+ax.YTickLabelRotation = 30; % Rotate label for better display
+colorbar % Add a color bar to indicate the scaling of color
+
+
+% Generate humidity 3D bar chart
+% Get humidity per whole clock for each day
+for m = 1:length(dayRange) % Loop over all days
+    for n = 1:24 % Loop over 24 hours
+        if any(day(time)==dayRange(m) & hour(time)==n); % Check if data exist for this specific time
+            hourlyData = conservador((day(time)==dayRange(m) & hour(time)==n)); % Pull out the hourly humidity from the matrix
+            weatherData(m,n) = hourlyData(1); % Assign the humidity at the time closest to the whole clock
+        end
+    end
+end
+
+% Plot
+figure
+h = bar3(datenum(dateRange(1):dateRange(2)), weatherData);
+for k = 1:length(h) % Change the face color for each bar
+    h(k).CData = h(k).ZData;
+    h(k).FaceColor = 'interp';
+end
+title('Humidity Distribution')
+xlabel('Hour of Day')
+ylabel('Date')
+datetick('y','mmm dd') % Change the Y-Tick to display specified date format 
+ax = gca;
+ax.XTick = 1:24; % Change the X-Tick to 24 hours 
+ax.YTickLabelRotation = 30; % Rotate label for better display
+colorbar % Add a color bar to indicate the scaling of color
+
+
+%% Interpolation and contour for Temperature, Humidity and Pressure
+
+% Replace missing data by interpolation, rather than removing the missing
+% data directly from the variable. This allows to keep the dimension of the
+% array being consistent
+xNew = linspace(1,size(data,1),100)'; % Create new x coordinates
+tNew = interp1(congelador(~isnan(congelador)),xNew,'linear','extrap'); % Temperature interpolation. Extrapolation is applied here in case that the last entry is NaN.
+hNew = interp1(conservador(~isnan(conservador)),xNew,'linear','extrap'); % Humidity interpolation
+pNew = interp1(frutas(~isnan(frutas)),xNew,'linear','extrap'); % Pressure interpolation
+
+% Find the index of the max pressure
+[pMax,idx] = max(pNew);
+
+% Create surface fitting data
+sf = fit([tNew,hNew],pNew,'linearinterp');
+
+% Plot
+figure
+hsf = plot(sf,[tNew,hNew],pNew); % Plot the surface with nodes. This plot function is provided in Curve Fitting Toolbox. The output is an array of a surface object and a line object.
+hsf(1).EdgeColor = 'interp'; % Change face edge color of the surface
+hsf(1).FaceAlpha = 0.5; % Change the transparency of the surface
+xlabel('Temperature')
+ylabel('Humidity')
+zlabel('Pressure')
+title('Linear Interpolation Surface')
+
+% 2D View with the location of max pressure
+figure
+hsf = plot(sf); % Plot the surface only
+hsf.EdgeColor = 'interp'; % Change face edge color
+hold on
+plot3(tNew(idx),hNew(idx),pMax,'r.', 'MarkerSize',30) % Plot the location of max pressure
+text(tNew(idx)+2,hNew(idx)+2,pMax,['P= ',num2str(pMax),', T=',...
+    num2str(tNew(idx)),', H=',num2str(hNew(idx))]) % Display the values at the location above
+title('Contour of the Pressure')
+xlabel('Temperature')
+ylabel('Humidity')
+grid off
+view(2) % Set the view to 2D, i.e., observing the plot from top to bottom along z-axis
+hold off
+
+
+%% Dew Point
+
+% Convert temperature from Fahrenheit to Celsius
+tempC = (5/9)*(congelador-32);
+
+% Calculate dew point. Refer to Wiki (https://en.wikipedia.org/wiki/Dew_point) for the formula and more details  
+% Specify the constants for water vapor (b) and barometric (c) pressure.
+b = 17.67;
+c = 243.5;
+% Calculate the intermediate value 'gamma'
+gamma = log(conservador/100) + b*tempC ./ (c+tempC);
+% Calculate dew point in Celsius
+dewPoint = c*gamma ./ (b-gamma);
+
+% Convert to dew point in Fahrenheit
+dewPointF = (dewPoint*1.8) + 32;
+
+% Plot
+figure
+hold on
+plot(time, dewPointF,'d') % Plot dew points
+xlabel('Time')
+ylabel('Dew Point')
+xlim([datenum(time(1)) datenum(time(end))]) % Adjust the x-axis limits
+fill([xlim fliplr(xlim)], [68 68 80 80], 'r', 'LineStyle', 'none', 'FaceAlpha', 0.1) % Highlight the uncomfortable zone
+text(0.7*datenum(time(1)) + 0.3*datenum(time(end)), 75, 'Uncomfortable', 'FontWeight','bold') % Add text for the zone
+fill([xlim fliplr(xlim)], [50 50 68 68], 'g', 'LineStyle', 'none', 'FaceAlpha', 0.1) % Highlight the comfortable zone
+text(0.7*datenum(time(1)) + 0.3*datenum(time(end)), 60, 'Comfortable', 'FontWeight','bold') % Add text for the zone
+fill([xlim fliplr(xlim)], [min(ylim) min(ylim) 50 50], 'y', 'LineStyle', 'none', 'FaceAlpha', 0.1) % Highlight the dry zone
+text(0.65*datenum(time(1)) + 0.35*datenum(time(end)), 20, 'Dry', 'FontWeight','bold') % Add text for the zone
+hold off
+
+
+%% Wind Compass and Feather
+
+% Specify the latest n+1 wind directions to be displayed
+n = 9;
+
+% Convert to radians
+rad = ventilador*pi/180;
+
+% Create a feather plot
+% Remove missing data and any wind speed with value 0 
+idx = (~isnan(rad)) & (~isnan(puerta2)) & (puerta2~=0);
+% Convert polar coordinates to Cartesian. Note that dividing by the maximum
+% wind speed allows to scale the length of each arrow by its relative wind
+% speed, rather than the wind direction.
+[x,y] = pol2cart(rad(idx),puerta2(idx)/max(puerta2(idx)));
+% Plot
+figure
+subplot(2,1,2)
+feather(x((end-n):end),y((end-n):end)) % Plot the feather
+xlim([0 n+2]) % Adjust the x-axis
+ylim([-1 1]) % Adjust the y-axis
+xlabel(['The last ',num2str(n+1),' wind direction']) % Add x lable
+title('Wind Direction Changes')
+grid on
+ax = gca;
+ax.YTickLabel = {}; % Hide the Y-Tick
+ax.XTick = 1:(n+1); % Adjust the X-Tick for n+1 data
+
+% Create a compass plot
+% Adjust the wind direction to match map compass, such that North is equal to 0 degree
+rad = -rad+pi/2;
+% Calculate the cosine component
+u = cos(rad) .* puerta2; % x coordinate of wind speed on circular plot
+% Calculate the sine component
+v = sin(rad) .* puerta2; % y coordinate of wind speed on circular plot
+% Plot
+subplot(2,1,1)
+compass(u((end-n):end),v((end-n):end)) % Plot compass
+title('Wind Compass')
+ax = gca;
+ax.View = [-90 90]; % Rotate axis 90 degrees counterclock-wise such that North is equal to 0 degree
+
+
+%% Instant Weather Flag
+
+% Convert to radians
+theta = ventilador(end)*pi/180;
+
+% Covert wind speed to a relative angle of the wind flag with z axis, by
+% assuming the max wind speed is 5mph.
+maxWindSpeed = 5;
+speedAngle = pi/2*puerta2(end)/maxWindSpeed;
+ytheta = pi-speedAngle;
+
+% Create the cone as a flag
+% Specify the radius of the cone
+ConeRadius = 0.1;
+% Create coordinate limits and rotation matrix
+xMax = 1.5;
+xMin = -xMax;
+yMax = 1.5;
+yMin = -yMax;
+zMax = 1.5;
+zMin = -0.5;
+yRotate = [cos(ytheta) 0 sin(ytheta); 
+           0 1 0;
+           -sin(ytheta) 0 cos(ytheta)];
+zRotate = [cos(theta) -sin(theta) 0;
+           sin(theta) cos(theta) 0;
+           0 0 1];
+% Create the cone surface data
+t = [0;ConeRadius];
+[X,Y,Z]=cylinder(t,50);
+% Adjust the direction of the cone flag such that the cone is pointing down
+% along z-axis
+XYZ = zRotate*(yRotate*[X(2,:);Y(2,:);Z(2,:)]);
+X(2,:) = XYZ(1,:); % Pull out x coordinate of the cone
+Y(2,:) = XYZ(2,:); % Pull out y coordinate of the cone
+Z(2,:) = XYZ(3,:); % Pull out z coordinate of the cone
+Z = Z + zMax; % Raise the flag to the top of the post
+
+% Plot 
+figure
+c = jet; % Define the colormap
+
+% Plot the cone and use the instant temperature data to display its color
+h = surf(X,Y,Z,'FaceColor', c(round(congelador(end)/100*64),:),...
+    'LineStyle','none','FaceAlpha',0.8,'FaceLighting','gouraud');
+% Add lights to adjust the color of the cone
+light('Position',[xMin 0 0],'Color',c(round(congelador(end)/100*64),:))
+light('Position',[xMax 0 0],'Color',c(round(congelador(end)/100*64),:))
+light('Position',[0 yMax 0],'Color',c(round(congelador(end)/100*64),:))
+light('Position',[0 yMin 0],'Color',c(round(congelador(end)/100*64),:))
+
+% Plot directions and the vertical post
+hold on
+plot3(0,0,zMax,'k.', 'MarkerSize',25) % Post
+plot3([0 0],[0 0],[0 zMax],'k','LineWidth',3) % Top node of the post
+plot3([xMin xMax],[0 0],[0 0],'k') % WE directions
+plot3([0 0],[yMin yMax],[0 0],'k') % NS directions
+
+% Plot auxiliary projection to help identify the direction where the flag
+% points to
+plot3([cos(theta)*sin(speedAngle) cos(theta)*sin(speedAngle)],...
+        [0 sin(theta)*sin(speedAngle)],[0 0],'kREPLACE_WITH_DASH_DASH')
+plot3([0 cos(theta)*sin(speedAngle)],[sin(theta)*sin(speedAngle) sin(theta)*sin(speedAngle)],[0 0],'kREPLACE_WITH_DASH_DASH')
+plot3([cos(theta)*sin(speedAngle) cos(theta)*sin(speedAngle)],...
+    [sin(theta)*sin(speedAngle) sin(theta)*sin(speedAngle)],[0 zMax-cos(speedAngle)],'kREPLACE_WITH_DASH_DASH')
+hold off
+
+% Add direction letters, color and annotations
+text([0,0,xMax,xMin,0], [yMax,yMin,0,0,0], [0.05,0,0,-0.05,zMax+0.15],...
+    {'N','S','E','W',['Wind Speed = ',num2str(round(puerta2(end),1)),'mph']})
+colormap('jet')
+cb = colorbar; % Get the colorbar object
+colorbar('Ticks',linspace(cb.Limits(1), cb.Limits(2),6),...
+         'TickLabels',{'Freeze','Cold','Cool','Neutral','Warm','Hot'}) % Label the color bar in terms of the human feeling about the temperature
+title('Weather Flag')
+axis equal
+axis off
+
+##### SOURCE END #####
+--></body></html>
