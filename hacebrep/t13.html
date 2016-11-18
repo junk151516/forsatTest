@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>t13</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-11-16"><meta name="DC.source" content="t13.m"><style type="text/css">
+      --><title>t13</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-11-17"><meta name="DC.source" content="t13.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,12 +66,11 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Temperaturas en Congelador</a></li><li><a href="#3">Temperaturas en Conservador</a></li><li><a href="#4">Temperaturas en Conservador zona Frutas</a></li><li><a href="#5">Promedios Totales</a></li><li><a href="#6">Diagrama en torta de trabajo compresor</a></li><li><a href="#7">Consolidado del d&iacute;a anterior</a></li><li><a href="#8">Comparaci&oacute;n de temperaturas con apertura de puertas</a></li><li><a href="#9">Comparaci&oacute;n de temperaturas con trabajo de compresor</a></li><li><a href="#10">Comparaci&oacute;n de temperaturas con resistencia de descongelamiento</a></li><li><a href="#11">Porcentaje de trabajo Compresor</a></li></ul></div><h2>Temperaturas en Congelador<a name="2"></a></h2><pre class="codeoutput">Temperatura promedio en congelador -19.8962 &deg;C
-</pre><img vspace="5" hspace="5" src="t13_01.png" alt=""> <h2>Temperaturas en Conservador<a name="3"></a></h2><pre class="codeoutput">Temperatura promedio en conservador 5.6866  &deg;C
-</pre><img vspace="5" hspace="5" src="t13_02.png" alt=""> <h2>Temperaturas en Conservador zona Frutas<a name="4"></a></h2><pre class="codeoutput">Temperatura promedio en compartimento de frutas 7.7427 &deg;C
-</pre><img vspace="5" hspace="5" src="t13_03.png" alt=""> <h2>Promedios Totales<a name="5"></a></h2><p>figure hold on</p><h2>Diagrama en torta de trabajo compresor<a name="6"></a></h2><img vspace="5" hspace="5" src="t13_04.png" alt=""> <h2>Consolidado del d&iacute;a anterior<a name="7"></a></h2><h2>Comparaci&oacute;n de temperaturas con apertura de puertas<a name="8"></a></h2><img vspace="5" hspace="5" src="t13_05.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con trabajo de compresor<a name="9"></a></h2><img vspace="5" hspace="5" src="t13_06.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con resistencia de descongelamiento<a name="10"></a></h2><img vspace="5" hspace="5" src="t13_07.png" alt=""> <h2>Porcentaje de trabajo Compresor<a name="11"></a></h2><img vspace="5" hspace="5" src="t13_08.png" alt=""> <p class="footer"><br><a href="http://www.forsatingenieria.com/servicios">by Forsat Ingenieria&reg; R</a><br></p></div><!--
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Temperaturas en Congelador</a></li><li><a href="#3">Temperaturas en Conservador</a></li><li><a href="#4">Temperaturas en Conservador zona Frutas</a></li><li><a href="#5">Promedios Totales</a></li><li><a href="#6">Diagrama en torta de trabajo compresor</a></li><li><a href="#7">Consolidado del d&iacute;a anterior</a></li><li><a href="#8">Comparaci&oacute;n de temperaturas con apertura de puertas</a></li><li><a href="#9">Comparaci&oacute;n de temperaturas con trabajo de compresor</a></li><li><a href="#10">Comparaci&oacute;n de temperaturas con resistencia de descongelamiento</a></li><li><a href="#11">Porcentaje de trabajo Compresor</a></li></ul></div><h2>Temperaturas en Congelador<a name="2"></a></h2><pre class="codeoutput">Temperatura promedio en congelador -19.8388 &deg;C
+</pre><img vspace="5" hspace="5" src="t13_01.png" alt=""> <h2>Temperaturas en Conservador<a name="3"></a></h2><pre class="codeoutput">Temperatura promedio en conservador 5.7577  &deg;C
+</pre><img vspace="5" hspace="5" src="t13_02.png" alt=""> <h2>Temperaturas en Conservador zona Frutas<a name="4"></a></h2><pre class="codeoutput">Temperatura promedio en compartimento de frutas 7.769 &deg;C
+</pre><img vspace="5" hspace="5" src="t13_03.png" alt=""> <h2>Promedios Totales<a name="5"></a></h2><p>figure hold on pFrutas = tMean; plot(xHalf,[pFrutas, pConservador,pCongelador],'LineWidth',2); % Plot average per hour legend('Frutas','Conservador','Congelador')</p><p>hold off</p><h2>Diagrama en torta de trabajo compresor<a name="6"></a></h2><img vspace="5" hspace="5" src="t13_04.png" alt=""> <h2>Consolidado del d&iacute;a anterior<a name="7"></a></h2><h2>Comparaci&oacute;n de temperaturas con apertura de puertas<a name="8"></a></h2><img vspace="5" hspace="5" src="t13_05.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con trabajo de compresor<a name="9"></a></h2><img vspace="5" hspace="5" src="t13_06.png" alt=""> <h2>Comparaci&oacute;n de temperaturas con resistencia de descongelamiento<a name="10"></a></h2><img vspace="5" hspace="5" src="t13_07.png" alt=""> <h2>Porcentaje de trabajo Compresor<a name="11"></a></h2><img vspace="5" hspace="5" src="t13_08.png" alt=""> <p class="footer"><br><a href="http://www.forsatingenieria.com/servicios">by Forsat Ingenieria&reg; R</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-
 close all
 clc
 %
@@ -246,11 +245,10 @@ ax.XTick = 1:24; % Change the X-Tick to 24 hours
 %legend(h2,'Average per hour')
 m = median(tMean);
 disp(['Temperatura promedio en compartimento de frutas ' num2str(median(tMean)) ' °C'])
-hold off
 %% Promedios Totales
 % figure
 % hold on
- pFrutas = tMean;
+% pFrutas = tMean;
 % plot(xHalf,[pFrutas, pConservador,pCongelador],'LineWidth',2); % Plot average per hour
 % legend('Frutas','Conservador','Congelador')
 % 
@@ -275,11 +273,9 @@ dateRange = [datetime('yesterday'),datetime('today')];
 %dateRange = [datetime('March 7, 2016'),datetime('March 13, 2016')];
 % Read data including the timestamp, and channel information.
 [data,time,channelInfo] = thingSpeakRead(readChannelID,'Fields',1:8,'DateRange',dateRange);
-compresor = data(:,1);
-ventilador = data(:,2);
+compresor = data(:,2);
 resistencia = data(:,3);
 puerta1 = data(:,4);
-puerta2 = data(:,5);
 congelador = data(:,6);
 conservador = data(:,7);
 frutas = data(:,8);
