@@ -30,7 +30,7 @@
         });
 
         // Create an array of alphabetical characters used to label the markers.
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var labels = '123456789123456';
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
@@ -39,13 +39,17 @@
         var markers = locations.map(function(location, i) {
           return new google.maps.Marker({
             position: location,
-            label: labels[i % labels.length]
+            label: 'T' + labels[i % labels.length]
+			//label: ''
           });
         });
+		
 
         // Add a marker clusterer to manage the markers.
         var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+			
+		
       }
       var locations = [ 
         {lat: 10.932396, lng: -74.790333},
@@ -54,8 +58,15 @@
         {lat: 10.942015, lng: -74.821259},
         {lat: 10.4409063, lng: -75.5250733}, 
 		{lat: 10.440654, lng: -75.522146},
-		{lat: 9.3037464, lng: -75.381706}
+		{lat: 9.3037464, lng: -75.381706},
+		{lat: 9.313058, lng: -75.383300},
+		{lat: 9.290126, lng: -75.4034578},
+		{lat: 10.958086, lng: -74.771375}
+		//,
+		//{lat: 9.303628, lng: -75.380857}
       ]
+	  
+	
     </script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
