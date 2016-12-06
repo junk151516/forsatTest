@@ -73,15 +73,15 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
 		links: "t4.html",
 		city : "Cartagena"	
       },
-      {
-      face : imagePath,
-        what: 'Proyecto Antioquia',
-        who: 'T5',
-        when: '3:08PM',
-        notes: "Luz Arteaga",
-		links: "t5.html",
-		city : "Barranquilla"
-      },
+      // {
+      // face : imagePath,
+        // what: 'Proyecto Antioquia',
+        // who: 'T5',
+        // when: '3:08PM',
+        // notes: "Luz Arteaga",
+		// links: "t5.html",
+		// city : "Barranquilla"
+      // },
       {
         face : imagePath,
         what: 'conservador C150L (Super Eco)',
@@ -118,15 +118,15 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
 		links: "t9.html",
 		city : "Barranquilla"
       },
-      {
-      face : imagePath,
-        what: 'conservador C150L (Super Eco)',
-        who: 'T10',
-        when: '3:08PM',
-        notes: "Yuleivy Judith Meza Payares",
-		links: "t10.html",
-		city : "Barranquilla"
-      },
+      // {
+      // face : imagePath,
+        // what: 'conservador C150L (Super Eco)',
+        // who: 'T10',
+        // when: '3:08PM',
+        // notes: "Yuleivy Judith Meza Payares",
+		// links: "t10.html",
+		// city : "Barranquilla"
+      // },
       {
       face : imagePath,
         what: 'Proyecto Antioquia',
@@ -144,16 +144,17 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
         notes: "Gladis Gutierrez de Gomez",
 		links: "t12.html",
 		city : "Barranquilla"
-      },
-      {
-      face : imagePath,
-        what: 'Proyecto Antioquia',
-        who: 'T13',
-        when: '3:08PM',
-        notes: "Graciela Cecilia Arrieta Sierra",
-		links: "t13.html",
-		city : "Sincelejo"
       }
+	  // ,
+      // {
+      // face : imagePath,
+        // what: 'Proyecto Antioquia',
+        // who: 'T13',
+        // when: '3:08PM',
+        // notes: "Graciela Cecilia Arrieta Sierra",
+		// links: "t13.html",
+		// city : "Sincelejo"
+      // }
 	  
 	  
     ];
