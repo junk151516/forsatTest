@@ -37,7 +37,7 @@ var channelsLoaded = 0;
 var channelKeys =[];
 //channelKeys.push({channelNumber:71944, name:'temp wifi',key:'222DM9RMFGT6A3GE',
    //fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'T'},{field:5,axis:'T'},{field:6,axis:'T'}]});
-channelKeys.push({channelNumber:58240, name:'Nevera',key:'S1ZEYUD33L5IJBM2',
+channelKeys.push({channelNumber:57380, name:'Nevera',key:'T3V30869H7J25153',
       fieldList:[{field:1,axis:'O'},{field:2,axis:'O'},{field:3,axis:'O'},{field:4,axis:'O'},{field:5,axis:'O'},{field:6,axis:'T'},{field:7,axis:'T'},{field:8,axis:'T'}]});
 
    //fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'}]});
@@ -120,12 +120,12 @@ $(document).ready(function()
          var fieldStr = "data.feeds["+h+"].field"+fieldList[fieldIndex].field;
 		  	 var v = eval(fieldStr);
  		  	p[0] = getChartDate(data.feeds[h].created_at);
-	 	  	if(fieldIndex<5){
+			if(fieldIndex<5){
 				p[1] = parseFloat(v)*(0.029166725);
 				//p[1] = parseFloat(v)*(0.0004861115);
 			}else{
 				p[1] = parseFloat(v);
-			}	 
+			}	 	  	
 	 	  	// if a numerical value exists add it
 	   		if (!isNaN(parseInt(v))) { fieldList[fieldIndex].data.push(p); }
        }
@@ -264,8 +264,8 @@ $(document).ready(function()
 			}
 		},
     tooltip: {
-      valueDecimals: 2,
-      //valueSuffix: '°C',
+      valueDecimals: 3,
+      ////valueSuffix: '°C',
       xDateFormat:'%Y-%m-%d<br/>%I:%M:%S %p'
 			// reformat the tooltips so that local times are displayed
 			//formatter: function() {
@@ -438,11 +438,13 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
 		<div class="dot"></div>
 		</div>
     </div>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/109123"></iframe>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/58240/maps/channel_show"></iframe>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="http://junk151516.github.io/hacebrep/img/t10.png"></iframe>
+	
+		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/108602"></iframe>
+		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/57380/maps/channel_show"></iframe>
 
-		<div id="below chart"> <button style="width: 89px; margin-top: -18px;" value="Hide All"
+	
+   	
+    <div id="below chart"> <button style="width: 89px; margin-top: -18px;" value="Hide All"
         name="Hide All Button"
         onclick="HideAll();">Hide
         All</button><button style="width: 162px; margin-top: -18px;" value="Load More Data"

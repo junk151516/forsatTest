@@ -120,7 +120,12 @@ $(document).ready(function()
          var fieldStr = "data.feeds["+h+"].field"+fieldList[fieldIndex].field;
 		  	 var v = eval(fieldStr);
  		  	p[0] = getChartDate(data.feeds[h].created_at);
-	 	  	p[1] = parseFloat(v);
+	 	  	if(fieldIndex<5){
+				p[1] = parseFloat(v)*(0.029166725);
+				//p[1] = parseFloat(v)*(0.0004861115);
+			}else{
+				p[1] = parseFloat(v);
+			}	 
 	 	  	// if a numerical value exists add it
 	   		if (!isNaN(parseInt(v))) { fieldList[fieldIndex].data.push(p); }
        }
@@ -259,8 +264,8 @@ $(document).ready(function()
 			}
 		},
     tooltip: {
-      valueDecimals: 1,
-      valueSuffix: '°C',
+      valueDecimals: 2,
+      //valueSuffix: '°C',
       xDateFormat:'%Y-%m-%d<br/>%I:%M:%S %p'
 			// reformat the tooltips so that local times are displayed
 			//formatter: function() {
