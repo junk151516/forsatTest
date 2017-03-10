@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-	<title>Haceb</title>
+	<title>RDS Online</title>
 	<link href="./img/favicons/favicon1.ico" rel="shortcut icon" type="image/x-icon">
 			<link rel="stylesheet" type="text/css" href="./anim.css" media="screen" />
 
@@ -37,8 +37,8 @@ var channelsLoaded = 0;
 var channelKeys =[];
 //channelKeys.push({channelNumber:71944, name:'temp wifi',key:'222DM9RMFGT6A3GE',
    //fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'},{field:4,axis:'T'},{field:5,axis:'T'},{field:6,axis:'T'}]});
-channelKeys.push({channelNumber:58241, name:'Nevera',key:'I7USCEGJOHBWAXI7',
-      fieldList:[{field:1,axis:'O'},{field:2,axis:'O'},{field:3,axis:'O'},{field:4,axis:'O'},{field:5,axis:'O'},{field:6,axis:'T'},{field:7,axis:'T'},{field:8,axis:'T'}]});
+channelKeys.push({channelNumber:211374, name:'Rotor 2',key:'KNBM3S5Q0DULWZSF',
+      fieldList:[{field:1,axis:'T'},{field:2,axis:'O'},{field:3,axis:'T'},{field:4,axis:'T'},{field:5,axis:'T'},{field:6,axis:'T'},{field:7,axis:'T'},{field:8,axis:'T'}]});
 
    //fieldList:[{field:1,axis:'T'},{field:2,axis:'T'},{field:3,axis:'T'}]});
      
@@ -120,15 +120,9 @@ $(document).ready(function()
          var fieldStr = "data.feeds["+h+"].field"+fieldList[fieldIndex].field;
 		  	 var v = eval(fieldStr);
  		  	p[0] = getChartDate(data.feeds[h].created_at);
-	 	  	p[1] = parseInt(v)*(0.029166725);
-			//if(fieldIndex<5){
-			//	p[1] = parseFloat(v)*(0.029166725);
-				//p[1] = parseFloat(v)*(0.0004861115);
-			//}else{
-				//p[1] = parseFloat(v);
-			//}	 
+	 	  	p[1] = parseFloat(v);
 	 	  	// if a numerical value exists add it
-	   		//if (!isNaN(parseInt(v))) { fieldList[fieldIndex].data.push(p); }
+	   		if (!isNaN(parseInt(v))) { fieldList[fieldIndex].data.push(p); }
        }
        fieldList[fieldIndex].name = eval("data.channel.field"+fieldList[fieldIndex].field);
 	   }
@@ -178,7 +172,7 @@ $(document).ready(function()
                       var p = []//new Highcharts.Point();
                       var v = eval(fieldStr);
                       p[0] = getChartDate(data.created_at);
-                      p[1] = parseFloat(v)*(0.029166725);
+                      p[1] = parseFloat(v);
                       // get the last date if possible
                       if (dynamicChart.series[chartSeriesIndex].data.length > 0) 
                       { 
@@ -265,8 +259,8 @@ $(document).ready(function()
 			}
 		},
     tooltip: {
-      valueDecimals: 2,
-      //valueSuffix: '°C',
+      valueDecimals: 1,
+      valueSuffix: '',
       xDateFormat:'%Y-%m-%d<br/>%I:%M:%S %p'
 			// reformat the tooltips so that local times are displayed
 			//formatter: function() {
@@ -289,7 +283,7 @@ $(document).ready(function()
 		},
 		yAxis: [{
             title: {
-                text: 'Temperatura °C'
+                text: '' //aqui se pone el titulo del eje 
             },
             id: 'T'
     }, {
@@ -411,7 +405,7 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
          var fieldStr = "data.feeds["+h+"].field"+fieldList[fieldIndex].field;
 		  	 var v = eval(fieldStr);
  		  	p[0] = getChartDate(data.feeds[h].created_at);
-	 	  	p[1] = parseFloat(v)*(0.029166725);
+	 	  	p[1] = parseFloat(v);
 	 	  	// if a numerical value exists add it
 	   		if (!isNaN(parseInt(v))) { fieldList[fieldIndex].data.push(p); }
        }
@@ -432,15 +426,13 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
   </script>
     <title>Camion Colanta</title>
   </head>
-  <body style="                      background-color: white;">
+  <body style="background-color: white;">
     <div id="chart-container" style="height: 600px;"><br>
       Espera un momento...<br>
 	  <div class="wrapper">
 		<div class="dot"></div>
 		</div>
     </div>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/109124"></iframe>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/58241/maps/channel_show"></iframe>
 
     <div id="below chart"> <button style="width: 89px; margin-top: -18px;" value="Hide All"
         name="Hide All Button"
@@ -472,8 +464,10 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
       <input id="Update" name="Update" type="checkbox" checked><span style="font-family: Lucida Grande;">Update
         Chart</span> <span id="Latency" style="font-family: Lucida Grande;">(Latency)</span>
     </div>
-	
-	
-	
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127243"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127226"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127024"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127218"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127495"></iframe>
   </body>
 </html>
