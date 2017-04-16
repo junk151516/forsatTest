@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-	<title>IOT HACEB</title>
+	<title>Energy meter</title>
 	<link href="./img/favicons/favicon1.ico" rel="shortcut icon" type="image/x-icon">
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -33,7 +33,7 @@ var channelsLoaded = 0;
 // fieldList shows which field you want to load, and which axis to display that field on, 
 // the 'T' Temperature left axis, or the 'O' Other right axis.
 var channelKeys =[];
-channelKeys.push({channelNumber:51000, name:'temp wifi',key:'FJTOSQEALYACHFTI',
+channelKeys.push({channelNumber:63112, name:'temp wifi',key:'XJUO056EK5V0LQ99',
    fieldList:[{field:1,axis:'O'},{field:2,axis:'T'},{field:3,axis:'O'},{field:4,axis:'T'},{field:5,axis:'O'},{field:6,axis:'T'},{field:7,axis:'O'},{field:8,axis:'T'}]});
 //channelKeys.push({channelNumber:104639, name:'Camion',key:'JAR022EPQDP5FBN3',
   // fieldList:[{field:1,axis:'T'},{field:3,axis:'O'}]});
@@ -426,11 +426,11 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
     <div id="chart-container" style="height: 600px;"><br>
       Espera un momento...<br>
     </div>
-	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/51000/maps/channel_show"></iframe>
-	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/51000/charts/2?dynamic=true&results=100&title=Temperature+Register&type=line&xaxis=Tiempo&yaxis=Temperatura"></iframe>
-	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/51000/charts/6?dynamic=true&results=100&title=Congelador&type=line&xaxis=Tiempo&yaxis=Temperatura"></iframe>
-	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/51000/charts/7?dynamic=true&results=100&title=Humedad+Relativa&type=line&xaxis=Tiempo&yaxis=Humedad"></iframe>
-	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/51000/charts/8?dynamic=true&results=100&title=Temperatura&type=line&xaxis=Tiempo&yaxis=Temperatura"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/63112/charts/1?dynamic=true&results=60&type=line"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/63112/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/63112/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/63112/charts/4?&results=60&dynamic=true"></iframe>
+	<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/63112/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
 
    
     <div id="below chart"> <button style="width: 89px; margin-top: -18px;" value="Hide All"
