@@ -46,7 +46,34 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       }
     ];
     $scope.todos = [
-      {
+        {
+        face : imagePath,
+        what: 'Medidor Cuartos',
+        who: 'Med1',
+        when: '3:08PM',
+        notes: "ForsatIngenieria",
+		links: "cuartos1.html",
+		city : "Copacabana"
+      },
+	   {
+        face : imagePath,
+        what: 'Medidor Cuartos',
+        who: 'Med2',
+        when: '3:08PM',
+        notes: "ForsatIngenieria",
+		links: "cuartos2.html",
+		city : "Copacabana"
+      },
+	  {
+        face : imagePath,
+        what: 'Medidor Cuartos',
+        who: 'Med3',
+        when: '3:08PM',
+        notes: "ForsatIngenieria",
+		links: "cuartos3.html",
+		city : "Copacabana"
+      },
+	  {
         face : imagePath,
         what: 'Proyecto Antioquia',
         who: 'T2',
