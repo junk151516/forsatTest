@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "motorAmac.data.unityweb",
+"asmCodeUrl": "motorAmac.asm.code.unityweb",
+"asmMemoryUrl": "motorAmac.asm.memory.unityweb",
+"asmFrameworkUrl": "motorAmac.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
