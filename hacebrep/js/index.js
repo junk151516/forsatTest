@@ -96,9 +96,9 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
         what: 'Proyecto Antioquia',
         who: 'T4',
         when: '3:08PM',
-        notes: "Jhon David Vandelamar",
+        notes: "Prueba de campo: Itagui- Antioquia",
 		links: "t4.html",
-		city : "Cartagena"	
+		city : "Itagui- Antioquia"	
       },
        {
        face : imagePath,
