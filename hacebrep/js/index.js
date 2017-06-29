@@ -138,10 +138,10 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
       {
       face : imagePath,
-        what: 'Proyecto Antioquia',
+        what: 'Carrera #38b-61 Barrio la magdalena',
         who: 'T9',
         when: '3:08PM',
-        notes: "Linet Hernandez",
+        notes: "José payares",
 		links: "t9.html",
 		city : "Barranquilla"
       },
