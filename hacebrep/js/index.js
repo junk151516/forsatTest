@@ -102,7 +102,7 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
        {
        face : imagePath,
-         what: 'Proyecto Antioquia',
+         what: 'Proyecto Coraje',
          who: 'T5',
          when: '3:08PM',
          notes: "Luz Arteaga",
@@ -138,12 +138,12 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
       {
       face : imagePath,
-        what: 'Carrera #38b-61 Barrio la magdalena',
+        what: 'Proyecto Coraje',
         who: 'T9',
         when: '3:08PM',
         notes: "José payares",
 		links: "t9.html",
-		city : "Barranquilla"
+		city : "Carrera #38b-61 Barrio la magdalena Barranquilla"
       },
        {
        face : imagePath,
@@ -165,7 +165,7 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
       {
       face : imagePath,
-        what: 'Proyecto Antioquia',
+        what: 'Proyecto Coraje',
         who: 'T12',
         when: '3:08PM',
         notes: "Gladis Gutierrez de Gomez",
