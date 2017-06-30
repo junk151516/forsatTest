@@ -75,25 +75,25 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
 	  {
         face : imagePath,
-        what: 'Proyecto Antioquia',
+        what: 'Proyecto Coraje',
         who: 'T2',
         when: '3:08PM',
-        notes: "Marleni Florez",
+        notes: "Osterman  Flores Avila",
 		links: "t2.html",
-		city : "Sincelejo"
+		city : "Los Cedros Soledad"
       },
       {
         face : imagePath,
-        what: 'Proyecto Antioquia',
+        what: 'Proyecto Coraje',
         who: 'T3',
         when: '3:08PM',
-        notes: "walter alvarez",
+        notes: "Daniel Lemaitre",
 		links: "t3.html",
-		city : "Sincelejo"
+		city : "Cartagena"
       },
       {
         face : imagePath,
-        what: 'Proyecto Antioquia',
+        what: 'Proyecto Coraje',
         who: 'T4',
         when: '3:08PM',
         notes: "Prueba de campo: Itagui- Antioquia",
@@ -105,7 +105,7 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
          what: 'Proyecto Coraje',
          who: 'T5',
          when: '3:08PM',
-         notes: "Luz Arteaga",
+         notes: "Diana Luz Mesa",
 		 links: "t5.html",
 		 city : "Barranquilla"
        },
@@ -120,12 +120,12 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
       {
       face : imagePath,
-        what: 'Proyecto Antioquia',
+        what: 'Proyecto Coraje',
         who: 'T7',
         when: '3:08PM',
-        notes: "Delsy Sierra Alvarez",
+        notes: "Julio Cesar Agamez",
 		links: "t7.html",
-		city : "Sincelejo"
+		city : "Cartagena"
       },
 	  {
       face : imagePath,
@@ -156,7 +156,7 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
        },
       {
       face : imagePath,
-        what: 'Proyecto Antioquia',
+        what: 'Proyecto Coraje',
         who: 'T11',
         when: '3:08PM',
         notes: "Angie Paola Valencia",
@@ -168,14 +168,14 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
         what: 'Proyecto Coraje',
         who: 'T12',
         when: '3:08PM',
-        notes: "Gladis Gutierrez de Gomez",
+        notes: "Socorro Gracia Sanjuanelo",
 		links: "t12.html",
 		city : "Barranquilla"
       }
 	   ,
        {
        face : imagePath,
-         what: 'Proyecto Antioquia',
+         what: 'Proyecto Coraje',
          who: 'T13',
          when: '3:08PM',
          notes: "Graciela Cecilia Arrieta Sierra",
