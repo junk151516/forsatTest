@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-	<title>RDS</title>
-	<link href="./img/favicons/favicon1.ico" rel="shortcut icon" type="image/x-icon">
-			<link rel="stylesheet" type="text/css" href="./anim.css" media="screen" />
-
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!--<script src="https://www.thingspeak.com/assets/application-927d1479ab2235e91ae25cb56d33b211.js"
-     type="text/javascript"></script>-->
-	<script src="./js/highstock.js"></script>
-    <script src="./js/exporting.js"></script>
-    <script src="./js/export-csv.js"></script>
-    <script type="text/javascript">
-      
+    
       // Webpage Javascript to chart multiple ThingSpeak channels on two axis with navigator, load historical data, and export cvs data.
       // Public Domain, by turgo.
 var dynamicChart;
@@ -273,7 +257,7 @@ $(document).ready(function()
 		},
     tooltip: {
       valueDecimals: 2,
-      //valueSuffix: 'Â°C',
+      //valueSuffix: '°C',
       xDateFormat:'%Y-%m-%d<br/>%I:%M:%S %p'
 			// reformat the tooltips so that local times are displayed
 			//formatter: function() {
@@ -435,56 +419,3 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
      if (numLoads<maxLoads) {loadChannelHistory(channelIndex,channelNumber,key,fieldList,numLoads,maxLoads);}
 	 });
 }
-
-  </script>
-    <title>RDS</title>
-  </head>
-  <body style="                      background-color: white;">
-    <div id="chart-container" style="height: 600px;"><br>
-      Espera un momento...<br>
-	  <div class="wrapper">
-		<div class="dot"></div>
-		</div>
-    </div>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127243?size=iframe"></iframe>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127218"></iframe>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127226"></iframe>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/127495"></iframe>
-		<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/130328"></iframe>
-
-		
-    <div id="below chart"> <button style="width: 89px; margin-top: -18px;" value="Hide All"
-        name="Hide All Button"
-        onclick="HideAll();">Hide
-        All</button><button style="width: 162px; margin-top: -18px;" value="Load More Data"
-        name="Load More Data"
-        onclick="loadOneChannel();">Load
-        More Historical Data </button>
-      <select id="Channel Select">
-      </select>
-      <select id="Loads">
-        <option value="1">1 Load</option>
-        <option value="2">2 Loads</option>
-        <option value="3">3 Loads</option>
-        <option value="4">4 Loads</option>
-        <option value="5" selected="selected">5 Loads</option>
-        <option value="6">6 Loads</option>
-        <option value="7">7 Loads</option>
-        <option value="8">8 Loads</option>
-        <option value="9">9 Loads</option>
-        <option value="10">10 Loads</option>
-        <option value="15">15 Loads</option>
-        <option value="20">20 Loads</option>
-        <option value="25">25 Loads</option>
-        <option value="30">30 Loads</option>
-        <option value="40">40 Loads</option>
-        <option value="50">50 Loads</option>
-      </select>
-      <input id="Update" name="Update" type="checkbox" checked><span style="font-family: Lucida Grande;">Update
-        Chart</span> <span id="Latency" style="font-family: Lucida Grande;">(Latency)</span>
-    </div>
-	
-	
-	
-  </body>
-</html>
