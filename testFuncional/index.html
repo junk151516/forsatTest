@@ -1,0 +1,70 @@
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+</head>
+<body ng-app="sidenavDemo2" ng-cloak>
+<navbar></navbar>
+ <div ng-controller="AppCtrl" layout="column" ng-cloak>
+
+  <section layout="row" flex>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left"
+                md-disable-backdrop md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">RDS Online</h1>
+      </md-toolbar>
+
+      <md-content layout-margin>
+        <md-list flex>
+          <!-- <md-list-item class="md-3-line" ng-repeat="item in todos" ng-href="{{ item.links }}"> -->
+		  <md-list-item class="md-3-line" ng-repeat="item in todos" href="{{ item.links }}">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ item.name }}</h3>
+          </div>
+        </md-list-item>
+      </md-list>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          Ocultar Lateral
+        </md-button>
+      </md-content>
+
+    </md-sidenav>
+
+    <md-content flex layout-padding>
+          <md-button ng-click="toggleLeft()" class="md-raised">
+           Centrales
+          </md-button>
+    </md-content>
+		<br>	
+		<br>
+  </section>
+  
+  
+  </div>
+
+  </body>
+  <div ng-view=""></div>
+</html>
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script data-require="angular-route@*" data-semver="1.3.5" src="https://code.angularjs.org/1.3.5/angular-route.js"></script>
+    
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- Your application bootstrap  -->
+  <script src="js/index.js"></script>
+
+
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.
+-->

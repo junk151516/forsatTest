@@ -1,0 +1,107 @@
+
+<!-- saved from url=(0054)http://community.thingspeak.com/code/Google_Gauge.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Google Gauge - ThingSpeak</title>
+
+<style type="text/css">
+  html, body { background-color: transparent; text-align: center; margin: 0 auto;}
+  #chart_div { width: 120px; text-align: center; margin: 0 auto;}
+</style>
+
+<script type="text/javascript" src="./Google Gauge - ThingSpeak_files/jquery.min.js.descarga"></script>
+<script type="text/javascript" src="./Google Gauge - ThingSpeak_files/jsapi"></script>
+<script type="text/javascript">
+
+	var chart;
+	var charts;
+	var data;
+
+      	google.load('visualization', '1', {packages:['gauge']});
+      	google.setOnLoadCallback(initChart);
+
+	function displayData(point) {
+
+		data.setValue(0, 0, 'Light Level');
+		data.setValue(0, 1, point);
+		chart.draw(data, options);
+
+	}
+
+	function loadData() {
+
+		// variable for the data point
+		var p;
+
+		$.getJSON('https://api.thingspeak.com/channels/9/feed/last.json?callback=?', function(data) {
+
+		// get the data point
+		p = data.field1;
+
+		if (p)
+		{
+			p = Math.round((p / 1023) * 100);
+			displayData(p);
+		}
+
+		});
+
+	}
+
+	function initChart() {
+
+		data = new google.visualization.DataTable();
+		data.addColumn('string', 'Label');
+		data.addColumn('number', 'Value');
+		data.addRows(1);
+
+	        chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+	        options = {width: 120, height: 120, redFrom: 90, redTo: 100,
+	            yellowFrom:75, yellowTo: 90, minorTicks: 5};
+
+		loadData();
+
+		setInterval('loadData()', 15000);
+
+	}
+
+</script>
+<script src="./Google Gauge - ThingSpeak_files/saved_resource" type="text/javascript"></script>
+<link href="./Google Gauge - ThingSpeak_files/ui+es_419.css" type="text/css" rel="stylesheet">
+<script src="./Google Gauge - ThingSpeak_files/format+es_419,default+es_419,ui+es_419,gauge+es_419.I.js.descarga" type="text/javascript"></script>
+
+  </head>
+
+  <body>
+    <div id="chart_div"><table cellpadding="0" cellspacing="0" align="center" style="border: 0px; padding: 0px; margin: 0px;"><tbody><tr style="border: 0px; padding: 0px; margin: 0px;"><td style="border: 0px; padding: 0px; margin: 0px; width: 120px;">
+      <div style="position: relative;">
+        <div dir="ltr" style="position: relative; width: 120px; height: 120px;">
+          <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+            <svg width="120" height="120" aria-label="Un gráfico" style="overflow: hidden;">
+              <defs id="defs"></defs><g>
+                <circle cx="59.5" cy="59.5" r="54" stroke="#333333" stroke-width="1" fill="#cccccc"></circle>
+                <circle cx="59.5" cy="59.5" r="48" stroke="#e0e0e0" stroke-width="2" fill="#f7f7f7"></circle>
+                <path d="M100.65069943049662,43.161928975936064A44,44,0,0,1,101.84648671698676,73.59674775249769L91.38486503774007,70.19756081437326A33,33,0,0,0,90.48802457287246,47.371446731952034Z" stroke="none" stroke-width="0" fill="#ff9900"></path>
+                <path d="M101.84648671698676,73.59674775249768A44,44,0,0,1,91.11269837220809,91.11269837220809L83.3345237791561,83.33452377915604A33,33,0,0,0,91.38486503774007,70.19756081437326Z" stroke="none" stroke-width="0" fill="#dc3912"></path>
+                <text text-anchor="middle" x="60" y="49.2" font-family="arial" font-size="12" stroke="none" stroke-width="0" fill="#333333">Light Level</text>
+                <text text-anchor="start" x="37.231161645793165" y="84.86883835420683" font-family="arial" font-size="6" stroke="none" stroke-width="0" fill="#333333">0</text>
+                <text text-anchor="end" x="82.76883835420686" y="84.8688383542068" font-family="arial" font-size="6" stroke="none" stroke-width="0" fill="#333333">100</text>
+                <path d="M26.235449491577945,80.69094316275158L22.483832768419944,82.98993684750175M22.33816195471192,72.23707297724792L18.153513283013247,73.59674775249769M20.522073584168133,63.10698019082267L16.135637315742372,63.45220021202518M20.887541712432544,53.80519518440686L16.54171301381394,53.11688353822985M27.962927022752076,36.72370400921807L24.40325224750231,34.137448899131186M34.281857286124705,29.88792376223879L31.4242858734719,26.542137513598654M42.02197621031394,24.716141642140634L40.024418011459936,20.79571293571182M50.75556359130616,21.494151152252L49.728403990340176,17.21572350250223M69.24443640869383,21.494151152252L70.27159600965982,17.21572350250222M77.97802378968605,24.716141642140627L79.97558198854006,20.795712935711805M85.71814271387528,29.887923762238778L88.57571412652808,26.542137513598647M92.03707297724792,36.723704009218054L95.59674775249769,34.13744889913117M99.11245828756745,53.80519518440685L103.45828698618607,53.11688353822983M99.47792641583187,63.10698019082263L103.86436268425763,63.45220021202515M97.66183804528808,72.2370729772479L101.84648671698676,73.59674775249768M93.76455050842208,80.69094316275155L97.51616723158008,82.98993684750172" stroke="#666666" stroke-width="1" fill-opacity="1" fill="none">
+                </path>
+                <path d="M35.10984130223353,84.89015869776648L28.887301627791913,91.11269837220809M27.4794404556027,46.52954318074886L19.34930056950337,43.16192897593608M59.99999999999999,24.799999999999997L59.99999999999999,16M92.5205595443973,46.529543180748846L100.65069943049662,43.161928975936064M84.89015869776651,84.89015869776645L91.11269837220813,91.11269837220806" stroke="#333333" stroke-width="2" fill-opacity="1" fill="none"></path>
+                <g>
+                  <text text-anchor="middle" x="60" y="97.2" font-family="arial" font-size="12" stroke="none" stroke-width="0" fill="#000000">52</text>
+                  <path d="M63.95254915937757,18.186397486670636C63.06633085097749,60.28985360502102,60.30975735234807,73.08723234235056,58.776591926859325,72.94230553984005C57.24342650137058,72.79737873732954,56.93366914902251,59.71014639497898,63.95254915937757,18.186397486670636" stroke="#c63310" stroke-width="1" fill-opacity="0.7" fill="#dc3912"></path><circle cx="59.5" cy="59.5" r="7" stroke="#666666" stroke-width="1" fill="#4684ee">
+                </circle>
+                </g></g>
+              </svg>
+            </div>
+          </div>
+          <div aria-hidden="true" style="display: none; position: absolute; top: 130px; left: 130px; white-space: nowrap; font-family: Arial; font-size: 8px;">-._.-*^*-._.-*^*-._.-</div>
+        </div>
+      </td>
+    </tr></tbody></table></div>
+
+
+</body>
+</html>
