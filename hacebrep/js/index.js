@@ -52,7 +52,7 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
         who: 'Med1',
         when: '3:08PM',
         notes: "ForsatIngenieria",
-		links: "cuartos1.html",
+		links: "initial/cuartos1.html",
 		city : "Copacabana"
       },
 	   {
@@ -61,7 +61,7 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
         who: 'Med2',
         when: '3:08PM',
         notes: "ForsatIngenieria",
-		links: "cuartos2.html",
+		links: "initial/cuartos2.html",
 		city : "Copacabana"
       },
 	  {
@@ -70,7 +70,7 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
         who: 'Med3',
         when: '3:08PM',
         notes: "ForsatIngenieria",
-		links: "cuartos3.html",
+		links: "initial/cuartos3.html",
 		city : "Copacabana"
       },
 	  {

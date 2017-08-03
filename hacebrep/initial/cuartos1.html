@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+      <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <html lang="en" >
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./css/anim.css" media="screen" />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--<script src="https://www.thingspeak.com/assets/application-927d1479ab2235e91ae25cb56d33b211.js"
+     type="text/javascript"></script>-->
+
+
+</head>
+<body ng-app="BlankApp" ng-cloak>
+<a href="../index.html" class="btn btn-info" role="button">Retornar</a>
+
+  <div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Datos">
+		<iframe src="https://app.initialstate.com/embed/#/tiles/TuxSCsVZLUH98y944Olw222ohbHczktx%3AMOD"></iframe>	
+	  </md-tab>
+      <md-tab label="Comparativas">
+	    <iframe src="https://app.initialstate.com/embed/#/lines/TuxSCsVZLUH98y944Olw222ohbHczktx%3AMOD"></iframe>
+      </md-tab>
+      <md-tab label="Señales">	  
+		<iframe src="https://app.initialstate.com/embed/#/waves/TuxSCsVZLUH98y944Olw222ohbHczktx%3AMOD"></iframe>	
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
+  <!--
+    Your HTML content here
+  -->
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- Your application bootstrap  -->
+  <script type="text/javascript">
+    /**
+     * You must include the dependency on 'ngMaterial'
+     */
+    angular.module('BlankApp', ['ngMaterial']);
+  </script>
+
+</body>
+</html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.
+-->
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
