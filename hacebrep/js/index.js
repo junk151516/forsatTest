@@ -93,10 +93,10 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
       {
         face : imagePath,
-        what: 'Proyecto Coraje',
+        what: 'Carrera 77 vis #54D-37, Barrio Catalina 2da',
         who: 'T4',
         when: '3:08PM',
-        notes: "Prueba de campo: Itagui- Antioquia",
+        notes: "Yolima Ramirez",
 		links: "t4.html",
 		city : "Itagui- Antioquia"	
       },
@@ -147,10 +147,10 @@ angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
       },
        {
        face : imagePath,
-         what: 'conservador C150L (Super Eco)',
+         what: 'Calle 40 A sur, #79C-53',
          who: 'T10',
          when: '3:08PM',
-         notes: "Yuleivy Judith Meza Payares",
+         notes: "Esperanza Solórzano",
 		 links: "t10.html",
 		 city : "Barranquilla"
        },
